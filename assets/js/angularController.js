@@ -100,12 +100,12 @@ app.controller('formController', function($scope,$http) {
     }
 
     $scope.submit = function(){
-        var nomor = $scope.nomorTransaksi
+        // var nomor = $scope.nomorTransaksi
     	var nama =  $scope.namaTransaksi
     	var transaksi = $('#selectedItem option:selected').text();
     	var uraian = $scope.uraian;
     	var uang = $scope.uang;
-    	var message = "<ul>"+"<li>"+"Nomor Transaksi : "+nomor+"</li>"+"<li>"+"Nama Transaksi : "+nama+"</li>"+"<li>"+"Transaksi : "+transaksi+"</li>"+"<li>"+"Uraian : "+uraian+"</li>"+"<li>"+"Pembayaran : "+uang+"</li>"+"</ul>";
+    	var message = "<ul>"+"<li>"+"Transaksi : "+transaksi+"</li>"+"<li>"+"Uraian : "+uraian+"</li>"+"<li>"+"Biaya : "+uang+"</li>"+"</ul>";
     	swal({   title: "<h2>Apakah anda yakin dengan data ini ?</h2>!",   text: message,   html: true ,showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes, delete it!",   closeOnConfirm: false}
             , function(){
                 var data =$.param({

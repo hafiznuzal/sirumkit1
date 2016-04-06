@@ -91,13 +91,20 @@ class m_report extends CI_Model
 	}
 
 
-
-
 	public function tabel_bulanan($tanggal)
 	{
 		$sql = "SELECT SUM( RENC_RSS ) AS RENC_RSS, SUM( RENC_RS ) AS RENC_RS, SUM( RENC_RM ) AS RENC_RM, SUM( RENC_MW ) AS RENC_MW, SUM( RENC_RUKO ) AS RENC_RUKO
 				FROM PEMBANGUNAN
 				WHERE PEMBANGUNAN.TAHUN = '$tahun'";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function insert_transaksi($id,$nomor_transaksi,$item_transaksi,$uraian,$biaya,$tanggal,$jenis)
+	{
+		$sql = "INSERT INTO Transaksi (Id_Transaksi, No_Transaksi, Item_Transaksi,Uraian,Biaya,Tanggal,Jenis)
+				VALUES ($id, $nomor_transaksi, '$item_transaksi','$uraian',$biaya,'$tanggal',$jenis)";
 		$query = $this->db->query($sql);
 		$data = $query->result_array();
 		return $data;

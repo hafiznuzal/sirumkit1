@@ -67,6 +67,9 @@ class Admin extends CI_Controller
 	public function pasien()
 	{
 		if($this->session->userdata('logged_in')){
+			$bulan = getdate()['month'];
+			$tahun = getdate()['year'];
+
 
 			// $data['daftar_perumahan'] = $this->perumahan_model->get_all();
 			// $data['daftar_lokasi'] = $this->perumahan_model->get_all_dummy();
@@ -75,10 +78,18 @@ class Admin extends CI_Controller
 				// $uraian = $this->input->post('uraian');
 				// $item = $this->input->post('item');
 				// $jenis = $this->input->post('Jenis');
+				$this->load->model('m_report');
 
-				// if ($this->input->post('j')) {
-				// 	# code...
-				// }
+				if ($this->input->post('jenis') === 1) {
+					$id_trans=$this->m_report->id_max_masuk($tahun, $bulan);
+					$id_trans++;
+					
+				}
+				else
+				{
+					$id_trans=$this->m_report->id_max_keluar($tahun, $bulan);
+				}
+
 				print_r($this->input->post());
 			}
 			if($this->input->method()=='get')

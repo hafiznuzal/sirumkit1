@@ -15,12 +15,7 @@
                                 <div class="col-lg-6">
                                     <form role="form">
                                         
-                                        <div class="form-group">
-                                            <label>Nomor Transaksi</label>
-                                            <input ng-model="nomorTransaksi" class="form-control" placeholder="Enter text" disabled style="width: 200px">
-                                            <label>Nama Transaksi</label>
-                                            <input ng-model="namaTransaksi" class="form-control" placeholder="Enter text">
-                                        </div>
+                                       
 
                                         <div class="form-group">
                                             <label>Jenis Transaksi</label>
@@ -36,6 +31,13 @@
                                             <label>Selects</label>
                                             <select id="selectedItem" ng-model="selectedItem" ng-options="item.value as item.name for item in option"></select>
                                         </div>
+
+                                        <!-- <div class="form-group">
+                                            <label>Nomor Transaksi</label>
+                                            <input ng-model="nomorTransaksi" class="form-control" placeholder="Enter text" disabled style="width: 200px">
+                                            <label>Nama Transaksi</label>
+                                            <input ng-model="namaTransaksi" class="form-control" placeholder="Enter text">
+                                        </div> -->
                                         
                                         <div class="form-group">
                                             <label>Uraian</label>

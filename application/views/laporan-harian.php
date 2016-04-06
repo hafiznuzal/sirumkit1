@@ -35,7 +35,16 @@
 						<div class="panel-body">
 							<div class="form-group panel-default">
 								<div class="row">
-									
+									<div class="col-md-2"> 
+									<label>Jenis Transaksi:</label> 
+									<select class="form-control form-inline" id="jenisOpt" name="JenisTransaksi">
+										<option value="1">Masuk</option>
+									    <option value="2">Keluar</option>
+									    
+									</select>
+									</div>	
+
+
 									<div class="col-md-2"> 
 									<label>Tanggal:</label> 
 									<select class="form-control form-inline" id="tanggalOpt" name="tanggal">
@@ -61,7 +70,7 @@
 
 									<div class="col-md-2">
 									<label>Tahun:</label> 
-									<select class="form-control form-inline" id="bulanOpt" name="bulan">
+									<select class="form-control form-inline" id="tahunOpt" name="tahun">
 									 	<option disabled selected><?php echo $tahun_s; ?></option>
 									 	<?php  for ($i=2015; $i <=$tahun ; $i++) { ?>
 
@@ -108,7 +117,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										
+
 										<?php for($c=1;$c<$jumlah;$c++){?>
 											
 											<tr class="odd gradeX">
@@ -165,7 +174,7 @@ $(document).ready(function(){
 	function changeDataPem()
 	{
 		
-		window.location="<?php echo site_url() ?>report/report_lahan/"+$('#tanggalOpt').val()+"/"+$('#bulanOpt').val()+"/"+$('#tahunOpt').val();
+		window.location="<?php echo site_url(); ?>/report/report_lahan/"+$('#tanggalOpt').val()+"/"+$('#bulanOpt').val()+"/"+$('#tahunOpt').val()+"/"+$('#jenisOpt').val();
 		
 	}
 	$('#tahunOpt').change(function(){
@@ -180,7 +189,7 @@ $(document).ready(function(){
 		
 		changeDataPem()
 	});
-	$('#kecamatanOpt').change(function(){
+	$('#jenisOpt').change(function(){
 		
 		changeDataPem()
 	});

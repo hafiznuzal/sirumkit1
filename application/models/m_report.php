@@ -8,9 +8,9 @@ class m_report extends CI_Model
 
 	public function id_max_masuk($tahun, $bulan)
 	{
-		$sql = "SELECT MAX(No_Transaksi)
+		$sql = "SELECT MAX(No_Transaksi) as Id
 				FROM transaksi
-				WHERE Jenis = 1 AND tanggal LIKE '".$tahun."-".$bulan."'";
+				WHERE Jenis = 1 AND tanggal LIKE '".$tahun."-".$bulan."%'";
 		$query = $this->db->query($sql);
 		$data = $query->result_array();
 		return $data;
@@ -18,9 +18,9 @@ class m_report extends CI_Model
 
 	public function id_max_keluar($tahun, $bulan)
 	{
-		$sql = "SELECT MAX(No_Transaksi)
+		$sql = "SELECT MAX(No_Transaksi) as Id
 				FROM transaksi
-				WHERE Jenis = 2 AND tanggal LIKE '".$tahun."-".$bulan."'";
+				WHERE Jenis = 2 AND tanggal LIKE '".$tahun."-".$bulan."%'";
 		$query = $this->db->query($sql);
 		$data = $query->result_array();
 		return $data;
@@ -104,10 +104,10 @@ class m_report extends CI_Model
 	public function insert_transaksi($id,$nomor_transaksi,$item_transaksi,$uraian,$biaya,$tanggal,$jenis)
 	{
 		$sql = "INSERT INTO Transaksi (Id_Transaksi, No_Transaksi, Item_Transaksi,Uraian,Biaya,Tanggal,Jenis)
-				VALUES ($id, $nomor_transaksi, '$item_transaksi','$uraian',$biaya,'$tanggal',$jenis)";
+				VALUES ($id, $nomor_transaksi,'$item_transaksi','$uraian',$biaya,'$tanggal',$jenis)";
 		$query = $this->db->query($sql);
-		$data = $query->result_array();
-		return $data;
+		// $data = $query->result_array();
+		// return $data;
 	}
 
 	public function tabel_statistik2_realisasi($tahun)

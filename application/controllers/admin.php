@@ -53,7 +53,7 @@ class Admin extends CI_Controller
 			$this->load->view('admin/admin_home');
 			$this->load->view('template/admin_footer');
 		}
-		else redirect(base_url()."/admin/login");
+		else redirect(base_url()."/");
 	}
 	
 	
@@ -67,30 +67,59 @@ class Admin extends CI_Controller
 	public function pasien()
 	{
 		if($this->session->userdata('logged_in')){
-			$bulan = getdate()['month'];
-			$tahun = getdate()['year'];
+			$bulan = date('m');
+			$tahun = date('Y');
+			$hari = date('d');
 
 
 			// $data['daftar_perumahan'] = $this->perumahan_model->get_all();
 			// $data['daftar_lokasi'] = $this->perumahan_model->get_all_dummy();
 			// $data['daftar_pengembang'] = $this->perumahan_model->get_pengembang_dummy();
 			if($this->input->method()=='post'){
-				// $uraian = $this->input->post('uraian');
-				// $item = $this->input->post('item');
-				// $jenis = $this->input->post('Jenis');
+				$uraian = $this->input->post('uraian');
+				$item = $this->input->post('item');
+				$jenis = $this->input->post('jenis');
+				$biaya = $this->input->post('biaya');
+				
 				$this->load->model('m_report');
 
-				if ($this->input->post('jenis') === 1) {
+				if ($this->input->post('jenis') == 1) {
 					$id_trans=$this->m_report->id_max_masuk($tahun, $bulan);
-					$id_trans++;
+					print_r($id_trans);
+					// if ($id_trans == 'NULL') {
+					// 	$id_trans = 0;
+					// }
+
+					$id_trans=$id_trans[0]['Id'];
+				
+					++$id_trans;
 					
 				}
 				else
 				{
-					$id_trans=$this->m_report->id_max_keluar($tahun, $bulan);
+					$id_trans=$this->m_report->id_max_keluar($tahun, $bulan);					
+					$id_trans=$id_trans[0]['Id'];
+					++$id_trans;
 				}
 
-				print_r($this->input->post());
+
+				if ($id_trans < 10) {
+					$id_trans_temp = "000{$id_trans}";
+				}
+				elseif ($id_trans < 100 && $id_trans > 10) {
+					$id_trans_temp = "00{$id_trans}";
+				}
+				elseif ($id_trans < 1000 && $id_trans > 100) {
+					$id_trans_temp = "0{$id_trans}";
+				}
+				else $id_trans_temp = $id_trans;
+
+				$id = "{$jenis}{$hari}{$bulan}{$tahun}{$id_trans_temp}";
+				$tanggal = date("Y-m-d");
+				$this->m_report->insert_transaksi($id,$id_trans,$item,$uraian,$biaya,$tanggal,$jenis);
+				
+
+				print_r($id);
 			}
 			if($this->input->method()=='get')
 			{
@@ -101,16 +130,11 @@ class Admin extends CI_Controller
 				print_r($datatrans);
 			}
 		}
-		else redirect(base_url()."/admin/login");
+		else redirect(base_url()."/");
 	}
 
 	
-	public function report_lahan()
-	{
-		$this->load->model('proyek_model');
-        $data['lokasi'] = $this->proyek_model->get_data_lokasi_all();
-        $this->load->view('/admin/admin_report_lahan',$data);
-	}
+	
 
 	
 }

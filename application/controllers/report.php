@@ -6,24 +6,22 @@ class Report extends CI_Controller
 	public function __construct()
 	{
 
-		parent::__construct();
-		$this->load->helper('url');
-		$this->load->library('session');
 		
-		$this->load->model('m_report');
-		$this->load->library("Pdf");
-        $this->load->library("tcpdf/tcpdf");
+		parent::__construct();
+
+		$this->load->helper('url');
+
+        $this->load->library('session');
+		
+		if(!$this->session->userdata('logged_in')){
+			redirect(base_url()."login");
+		}
 		if ($this->session->userdata('logged_in')) {
 			$session_data=$this->session->userdata('logged_in');
 			$this->sesi['tahun']=getdate()['year'];
 			$this->sesi['bulan']=getdate()['mon'];
 			$this->sesi['hari']=getdate()['weekday'];
 			$this->sesi['tanggal']=getdate()['mday'];
-
-			$this->sesi['s_tahun']=getdate()['year'];
-			$this->sesi['s_bulan']=getdate()['mon'];
-			// $this->sesi['s_hari']=getdate()['weekday'];
-			$this->sesi['s_tanggal']=getdate()['mday'];
 			
 			// $this->sesi['bulan']=getdate()['month'];
 			// $this->sesi['hari']=getdate()['weekday'];
@@ -37,6 +35,35 @@ class Report extends CI_Controller
 
 		}
 		
+	}
+
+	public function laporan_harian($tanggal,$bulan,$tahun,$jenisopt)
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			// $this->sesi['s_tahun']=$tahun;
+			// $this->sesi['s_bulan']=$bulan;	
+			// $this->sesi['s_tanggal']=$bulan;		
+
+			$this->load->view('template/admin_header',$this->sesi);
+			$tanggal_lengkap = date("Y-m-d");
+			$this->load->model('m_report');
+        	$data = $this->m_report->tabel_harian_masuk($tanggal_lengkap);
+        	// $this->load->view('/admin/laporan_harian',$data);
+			$data['tanggal_s']=$tanggal;
+			$data['bulan_s']=$bulan;
+			$data['tahun_s']=$tahun;
+			// print_r($data1);
+			$this->load->view('laporan-harian',$data);
+			$this->load->view('template/admin_footer');
+
+
+		}
+		
+		else redirect(base_url('login'));
+
+		
+        print_r($data);
 	}
 
 	public function laporan_chart()

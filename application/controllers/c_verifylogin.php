@@ -28,7 +28,7 @@ class C_verifyLogin extends CI_Controller {
                  //set session with value from database
                  $this->session->set_userdata('logged_in', $sess_array);
                  }
-          redirect(site_url()."/admin/");
+          redirect(base_url()."admin");
           } else {
               //if form validate false
               $this->form_validation->set_message('check_database', 'Invalid username or password');

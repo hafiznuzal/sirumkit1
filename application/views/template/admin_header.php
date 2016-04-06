@@ -189,7 +189,7 @@
 						</li>
 						<li class="divider"></li>
 						<?php } ?>-->
-						<li><a href="<?php echo site_url()?>admin/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+						<li><a href="<?php echo base_url('logout')?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 						</li>
 					</ul>
 					<!-- /.dropdown-user -->
@@ -202,11 +202,11 @@
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
 						<li>
-							<a href="<?php echo site_url('/admin/index');?>"><i class="fa fa-home fa-fw"></i> Halaman Utama</a>
+							<a href="<?php echo base_url('/admin/index');?>"><i class="fa fa-home fa-fw"></i> Halaman Utama</a>
 						</li>
 						
 						<li>
-							<a href="<?php echo site_url('/admin/pasien');?>"><i class="fa fa-wheelchair fa-fw"></i> Transaksi</a>
+							<a href="<?php echo base_url('/admin/pasien');?>"><i class="fa fa-wheelchair fa-fw"></i> Transaksi</a>
 						</li>
 						<!-- <li>
 							<a href="<?php echo site_url('/admin/pengembang');?>"><i class="fa fa-stethoscope fa-fw"></i> Rekam Medik</a>
@@ -228,20 +228,20 @@
 									
 	                            </ul>
                         </li> -->
-						
+						<?php $jenisopt = 1;  ?>
 						<li>
 							<a href="#"><i class="fa fa-file-text fa-fw"></i> Laporan<span class="fa arrow"></span></a>
 	                            <ul class="nav nav-second-level">
 	                                <li>
-										<a href="<?php echo site_url('/report/report_harian').'/'.$tanggal.'/'.$bulan.'/'.$tahun?>" ><i class="fa fa-file-text-o fa-fw"></i> Laporan Harian</a>
+										<a href="<?php echo base_url('/report/laporan_harian').'/'.$tanggal.'/'.$bulan.'/'.$tahun.'/'.$jenisopt?>" ><i class="fa fa-file-text-o fa-fw"></i> Laporan Harian</a>
 									</li>
 									
 	                                <li>
-	                                	<a href="<?php echo site_url('/report/report_bulanan').'/'.$bulan.'/'.$tahun?>" ><i class="fa fa-file-text-o fa-fw"></i> Laporan Bulanan</a>
+	                                	<a href="<?php echo base_url('/report/report_bulanan').'/'.$bulan.'/'.$tahun?>" ><i class="fa fa-file-text-o fa-fw"></i> Laporan Bulanan</a>
 									</li>
 
 									<li>
-	                                	<a href="<?php echo site_url('/report/report_tahunan').'/'.$tahun?>" ><i class="fa fa-file-text-o fa-fw"></i> Laporan Tahunan</a>
+	                                	<a href="<?php echo base_url('/report/report_tahunan').'/'.$tahun?>" ><i class="fa fa-file-text-o fa-fw"></i> Laporan Tahunan</a>
 									</li>
 
 									<!-- <li>

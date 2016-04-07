@@ -150,7 +150,23 @@
 											<br>
 
 											</td>
-											<td>aaa</td>
+											<td>
+											<?php foreach($hasil as $key => $value) {?>
+												<br>
+												<?php  if($value['Item_Transaksi'] === 'OK- Jasa OK') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'OK- Penerimaan Alat Monitor') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'OK- Penerimaan Alat Couter') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'OK- Penerimaan RR') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+											<?php }?>
+											</td>
 											
 
 										</tr>
@@ -181,7 +197,63 @@
 											<br>
 
 											</td>
-											<td>aaa</td>
+											<td>
+											<?php foreach($hasil as $key => $value) {?>											
+												<?php  if($value['Item_Transaksi'] === 'Rawat Inap - VIP') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'Rawat Inap - Kelas I') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'Rawat Inap - Kelas II') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'Rawat Inap - Kelas III') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												
+												<?php  if($value['Item_Transaksi'] === 'BPJS - Persentase dr dari pasien') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'BPJS - Labor Rawat Nginap') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+
+												<?php  if($value['Item_Transaksi'] === 'BPJS - Penerimaan HCU') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'BPJS - Transportasi') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'BPJS - Medical Record') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'BPJS - Piutang yang diterima') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'BPJS - Penerimaan Obat - Obat Rawat Inap') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'BPJS - Perasat') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+
+												<?php  if($value['Item_Transaksi'] === 'BPJS - Insentif obat rawat inap + rawat jalan') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'BPJS - Jasa Pelayanan') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+
+												<?php  if($value['Item_Transaksi'] === 'BPJS - BPJS - Penerimaan Rotgen') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'BPJS - Penerimaan USG') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+
+											<?php }?>
+											</td>
 											
 
 										</tr>

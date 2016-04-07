@@ -8,7 +8,6 @@
 			</div>
 			<div class ="row">
 				<div class ="col-lg-11">
-
 					<div id="addSuccess" class="alert alert-success" style="display:none";>
 						<a href="#" class="close" data-dismiss="alert" >&times;</a>
 						<strong>Berhasil!</strong> Data telah berhasil ditambahkan
@@ -38,8 +37,15 @@
 									<div class="col-md-2"> 
 									<label>Jenis Transaksi:</label> 
 									<select class="form-control form-inline" id="jenisOpt" name="JenisTransaksi">
-										<option value="1">Masuk</option>
-									    <option value="2">Keluar</option>
+										<?php if ($jenis == 1) {?>
+											<option disabled selected value="1">Masuk</option>
+											<option value="2">Keluar</option>
+										<?php }
+										if ($jenis == 2) { ?>
+										 	<option disabled selected value="2">Keluar</option>
+											<option value="1">Masuk</option>
+										<?php } ?>  
+
 									    
 									</select>
 									</div>	
@@ -85,9 +91,11 @@
 
 
 									<div class="col-md-3 pull-right"> 
-										<a href="#" class="pull-right" id="excelPemDownload">Download Excel <img src="<?php  echo site_url()?>assets/img/excel.png"></a>
 										<br>
-										<a href="#" class="pull-right" id="pdfPemDownload">Download PDF <img src="<?php  echo site_url()?>assets/img/pdf.png"></a>
+										
+										<a href="#" class="pull-right" id="excelPemDownload">Download Excel <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
+										<!-- <br>
+										<a href="#" class="pull-right" id="pdfPemDownload">Download PDF <img src="<?php  echo base_url('assets/img/pdf.png')?>"></a> -->
 
 
 									</div>
@@ -103,39 +111,27 @@
 										</tr> -->
 										<tr>
 											<th style="min-width: 150px;">No Transaksi</th>
-											<th style="min-width: 300px;">Uraian</th>
-											<th style="min-width: 200px;">Jumlah</th>
+											<th style="min-width: 300px;">Jenis Transaksi</th>
+											<th style="min-width: 200px;">Uraian</th>
 											
-											<th style="min-width: 150px;">No Transaksi</th>
-											<th style="min-width: 300px;">Uraian</th>
-											<th style="min-width: 200px;">Jumlah</th>
-
-											<th style="min-width: 200px;">Penanggung Jawab</th>
+											<th style="min-width: 150px;">Biaya</th>
+											
 											
 										</tr>
 											
 										</tr>
 									</thead>
 									<tbody>
+											<?php foreach($hasil as $key => $value) {?>
+												<tr class="odd gradeX">
 
-										<?php for($c=1;$c<$jumlah;$c++){?>
-											
-											<tr class="odd gradeX">
-
-											<?php foreach ($lah_kec[$c] as $i) {?>
-										
-											<td><?php echo " "?></td>
-											<td><?php echo "Pembelian Alat Uro"?></td>
-											<td><?php echo "Inventory RS"?></td>
-											<td><?php echo "0"?></td>
-											<td><?php echo "2000000"?></td>
-											<td><?php echo "21 Januari"?></td>
-											
+												<td><?php echo $value['No_Transaksi']; ?></td>
+												<td><?php echo $value['Item_Transaksi'];?></td>
+												<td><?php echo $value['Uraian'];?></td>
+												<td><?php echo $value['Biaya'];?></td>
+												
+												</tr>
 										<?php }?>
-											
-										</tr>
-
-										<?php } ?>
 
 
 									</tbody>
@@ -173,8 +169,9 @@ $(document).ready(function(){
 	
 	function changeDataPem()
 	{
-		
-		window.location="<?php echo site_url(); ?>/report/report_lahan/"+$('#tanggalOpt').val()+"/"+$('#bulanOpt').val()+"/"+$('#tahunOpt').val()+"/"+$('#jenisOpt').val();
+		alert($('#jenisOpt').find(":selected").val())
+		// if($('#tahunOpt').val()!=null || $('#bulanOpt').val() !=null && $('#tanggalOpt').val() != null)
+		window.location="<?php echo site_url(); ?>/report/laporan_harian/"+$('#tanggalOpt').find(":selected").val()+"/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val()+"/"+$('#jenisOpt').find(":selected").val();
 		
 	}
 	$('#tahunOpt').change(function(){

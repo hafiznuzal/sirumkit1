@@ -237,7 +237,7 @@
 									</li>
 									
 	                                <li>
-	                                	<a href="<?php echo base_url('/report/report_bulanan').'/'.$bulan.'/'.$tahun?>" ><i class="fa fa-file-text-o fa-fw"></i> Laporan Bulanan</a>
+	                                	<a href="<?php echo base_url('/report/laporan_bulanan').'/'.$bulan.'/'.$tahun.'/'.$jenisopt?>" ><i class="fa fa-file-text-o fa-fw"></i> Laporan Bulanan</a>
 									</li>
 
 									<li>

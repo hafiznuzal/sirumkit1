@@ -41,18 +41,22 @@ class Report extends CI_Controller
 	{
 		if($this->session->userdata('logged_in'))
 		{
-			// $this->sesi['s_tahun']=$tahun;
-			// $this->sesi['s_bulan']=$bulan;	
-			// $this->sesi['s_tanggal']=$bulan;		
 
 			$this->load->view('template/admin_header',$this->sesi);
 			$tanggal_lengkap = date("Y-m-d");
 			$this->load->model('m_report');
-        	$data = $this->m_report->tabel_harian_masuk($tanggal_lengkap);
+
+
+
+			if ($jenisopt == 1) {
+				$data['hasil'] = $this->m_report->tabel_harian_masuk($tanggal_lengkap);
+			}
+        	else $data['hasil'] = $this->m_report->tabel_harian_keluar($tanggal_lengkap);
         	// $this->load->view('/admin/laporan_harian',$data);
 			$data['tanggal_s']=$tanggal;
 			$data['bulan_s']=$bulan;
 			$data['tahun_s']=$tahun;
+			$data['jenis']=$jenisopt;
 			// print_r($data1);
 			$this->load->view('laporan-harian',$data);
 			$this->load->view('template/admin_footer');
@@ -63,7 +67,39 @@ class Report extends CI_Controller
 		else redirect(base_url('login'));
 
 		
-        print_r($data);
+        // print_r($data);
+	}
+
+	public function laporan_bulanan($bulan,$tahun,$jenisopt)
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			
+
+			$this->load->view('template/admin_header',$this->sesi);
+			$tanggal_lengkap = date("Y-m");
+			$this->load->model('m_report');
+
+
+
+			if ($jenisopt == 1) {
+				$data['hasil'] = $this->m_report->tabel_bln_th_msk($tanggal_lengkap);
+			}
+        	else $data['hasil'] = $this->m_report->tabel_bln_th_klr($tanggal_lengkap);
+        	
+			// $data['tanggal_s']=$tanggal;
+			$data['bulan_s']=$bulan;
+			$data['tahun_s']=$tahun;
+			$data['jenis']=$jenisopt;
+			
+			$this->load->view('laporan-bulanan',$data);
+			$this->load->view('template/admin_footer');
+
+
+		}
+		
+		else redirect(base_url('login'));
+
 	}
 
 	public function laporan_chart()
@@ -145,32 +181,6 @@ class Report extends CI_Controller
 
 
 
-		
-	public function statistic_pembangunan($tahun,$periode)
-	{
-		$data= $this->m_report->tabel_statistik2_rencana($tahun,$periode);
-        $data1= $this->m_report->tabel_statistik2_realisasi($tahun,$periode);
-	}
-
-		
-	public function report_harian($tanggal,$bulan,$tahun)
-	{
-		if($this->session->userdata('logged_in'))
-		{
-			$this->sesi['s_tahun']=$tahun;
-			$this->sesi['s_bulan']=$bulan;	
-			$this->sesi['s_tanggal']=$bulan;		
-			$this->load->view('template/admin_header',$this->sesi);
-			$data['tanggal_s']=$tanggal;
-			$data['bulan_s']=$bulan;
-			$data['tahun_s']=$tahun;
-			// print_r($data1);
-			$this->load->view('laporan-harian',$data);
-			$this->load->view('template/admin_footer');
-		}
-		
-		else redirect(site_url()."admin/login");
-	}
 
 	public function report_bulanan($bulan,$tahun)
 	{

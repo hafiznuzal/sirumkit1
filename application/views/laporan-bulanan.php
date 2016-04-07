@@ -35,8 +35,22 @@
 						<div class="panel-body">
 							<div class="form-group panel-default">
 								<div class="row">
-									
-									
+									<div class="col-md-2"> 
+									<label>Jenis Transaksi:</label> 
+									<select class="form-control form-inline" id="jenisOpt" name="JenisTransaksi">
+										<?php if ($jenis == 1) {?>
+											<option disabled selected value="1">Masuk</option>
+											<option value="2">Keluar</option>
+										<?php }
+										if ($jenis == 2) { ?>
+										 	<option disabled selected value="2">Keluar</option>
+											<option value="1">Masuk</option>
+										<?php } ?>  
+
+									    
+									</select>
+									</div>				
+
 									<div class="col-md-2"> 
 									<label>Bulan:</label> 
 									<select class="form-control form-inline" id="bulanOpt" name="bulan">
@@ -51,7 +65,7 @@
 
 									<div class="col-md-2">
 									<label>Tahun:</label> 
-									<select class="form-control form-inline" id="bulanOpt" name="bulan">
+									<select class="form-control form-inline" id="tahunOpt" name="tahun">
 									 	<option disabled selected><?php echo $tahun_s; ?></option>
 									 	<?php  for ($i=2015; $i <=$tahun ; $i++) { ?>
 
@@ -66,9 +80,11 @@
 
 
 									<div class="col-md-3 pull-right"> 
-										<a href="#" class="pull-right" id="excelPemDownload">Download Excel <img src="<?php  echo base_url()?>assets/img/excel.png"></a>
 										<br>
-										<a href="#" class="pull-right" id="pdfPemDownload">Download PDF <img src="<?php  echo base_url()?>assets/img/pdf.png"></a>
+										
+										<a href="#" class="pull-right" id="excelPemDownload">Download Excel <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
+										<!-- <br>
+										<a href="#" class="pull-right" id="pdfPemDownload">Download PDF <img src="<?php  echo base_url('assets/img/pdf.png')?>"></a> -->
 
 
 									</div>
@@ -77,44 +93,50 @@
 							<div class ="table">
 								<table id="bulanan" class="table table-striped table-bordered">
 									<thead>
+									<!-- <?php print_r($hasil) ?> -->
 										<!-- <tr>
 											<th style="min-width: 550px;">Pemasukan</th>
 											<th style="min-width: 550px;">Pengeluaran</th>
 											
 										</tr> -->
 										<tr>
-											<th style="min-width: 150px;">No Transaksi</th>
+											<th style="min-width: 150px;">No </th>
 											<th style="min-width: 300px;">Uraian</th>
-											<th style="min-width: 200px;">Jumlah</th>
-											
-											<th style="min-width: 150px;">No Transaksi</th>
-											<th style="min-width: 300px;">Uraian</th>
-											<th style="min-width: 200px;">Jumlah</th>
-
-											<th style="min-width: 200px;">Penanggung Jawab</th>
-											
+											<th style="min-width: 200px;">Debet</th>
 										</tr>
 											
 										
 									</thead>
 									<tbody>
 										
-
-
+										
+										
 										<tr class="odd gradeX">
 											<td><?php echo "1"?>;</td>
 											<td><?php echo "Penerimaan VK"?>;
+											
 											<br><?php echo "a. Persalinan"?>;
 											<br><?php echo "b. Perawatan Bayi"?>;
 											<br><?php echo "c. Jasa VK"?>;
 											<br>
 
 											</td>
-											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
+											<td> 
+											<?php foreach($hasil as $key => $value) {?>
+
+												<?php  if($value['Item_Transaksi'] === 'VK- Persalinan') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'VK- Perawatan Bayi') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+												<?php  if($value['Item_Transaksi'] === 'VK- Jasa VK') {?>
+													<br> <?php echo $value['Biaya']; ?>
+												<?php } ?>
+
+
+											<?php }?>
+											</td>
 
 										</tr>
 
@@ -129,10 +151,7 @@
 
 											</td>
 											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
+											
 
 										</tr>
 
@@ -163,10 +182,7 @@
 
 											</td>
 											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
+											
 
 										</tr>
 
@@ -183,10 +199,7 @@
 
 											</td>
 											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
+											
 
 										</tr>
 
@@ -196,14 +209,12 @@
 											
 											</td>
 											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
-											<td>aaa</td>
+											
 
 										</tr>
 
 
+												
 
 									</tbody>
 								</table>
@@ -241,7 +252,7 @@ $(document).ready(function(){
 	function changeDataPem()
 	{
 		
-		window.location="<?php echo base_url() ?>report/report_bulanan/"+$('#bulanOpt').val()+"/"+$('#tahunOpt').val();
+		window.location="<?php echo site_url(); ?>/report/laporan_harian/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val()+"/"+$('#jenisOpt').find(":selected").val()
 		
 	}
 	$('#tahunOpt').change(function(){
@@ -256,7 +267,7 @@ $(document).ready(function(){
 		
 		changeDataPem()
 	});
-	$('#kecamatanOpt').change(function(){
+	$('#jenisOpt').change(function(){
 		
 		changeDataPem()
 	});

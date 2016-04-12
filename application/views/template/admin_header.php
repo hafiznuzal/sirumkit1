@@ -241,40 +241,12 @@
 									</li>
 
 									<li>
-	                                	<a href="<?php echo base_url('/report/report_tahunan').'/'.$tahun?>" ><i class="fa fa-file-text-o fa-fw"></i> Laporan Tahunan</a>
+	                                	<a href="<?php echo base_url('/report/laporan_tahunan').'/'.$tahun.'/'.$jenisopt?>" ><i class="fa fa-file-text-o fa-fw"></i> Laporan Tahunan</a>
 									</li>
 
-									<!-- <li>
-	                                	<a href="<?php echo site_url('/report/rekapitulasi_lahan_kecamatan').'/'.$tahun.'/'.$bulan?>" ><i class="fa fa-file-text-o fa-fw"></i> Rekapitulasi Lahan Kecamatan Se Kabupaten Sidoardjo</a>
-									</li> -->
 	                            </ul>
                         </li>
-						<!-- <li>
-							<a href="#"><i class="fa fa-file-text fa-fw"></i> Laporan Apotek<span class="fa arrow"></span></a>
-	                            <ul class="nav nav-second-level">
-	                                <li>
-										<a href="<?php echo site_url('/report/report_pembangunan').'/'.$tahun?>" ><i class="fa fa-file-text-o fa-fw"></i> Laporan Tahunan</a>
-									</li>
-									
-	                                <li>
-	                                	<a href="<?php echo site_url('/report/report_pembangunan_perkecamatan').'/'.'1'.'/'.$tahun.'/'.$bulan?>" ><i class="fa fa-file-text-o fa-fw"></i> Laporan Bulanan</a>
-									</li>
-
-									
-	                            </ul>
-                        </li>
-                        <li>
-							<a href="<?php echo site_url('/admin/lokasi')?>"><i class="fa fa-users fa-fw"></i> Karyawan</a>
-						</li>
-
-                        <li>
-							<a href="<?php echo site_url('/report/laporan_chart')?>"><i class="fa fa-line-chart fa-fw"></i> Statistik Pasien</a>
-						</li>
-
-						<li>
-							<a href="<?php echo site_url()?>admin/logout"><i class ="fa fa-power-off fa-fw"></i>Logout</a>
-							
-						</li> -->
+						
 					</ul>
 				</div>
 				<!-- /.sidebar-collapse -->

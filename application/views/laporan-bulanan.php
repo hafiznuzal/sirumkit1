@@ -1,4 +1,4 @@
-	<div id="page_container">
+=<div id="page_container">
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12" style="color:#446CB3">
@@ -35,7 +35,7 @@
 						<div class="panel-body">
 							<div class="form-group panel-default">
 								<div class="row">
-									<div class="col-md-2"> 
+																		<div class="col-md-2"> 
 									<label>Jenis Transaksi:</label> 
 									<select class="form-control form-inline" id="jenisOpt" name="JenisTransaksi">
 										<?php if ($jenis == 1) {?>
@@ -49,7 +49,9 @@
 
 									    
 									</select>
-									</div>				
+									</div>	
+
+								
 
 									<div class="col-md-2"> 
 									<label>Bulan:</label> 
@@ -73,8 +75,8 @@
 									    <?php } ?>	
 									</select>
 									</div> 
-									
 
+									<?php $VK_Persalinan=$VK_Perawatan=$VK_Jasa =$OK_Jasa=$OK_Monitor=$OK_Couter=$OK_RR=$VIP=$Kelas_I=$Kelas_II=$Kelas_III=$BPJS_Persentase=$BPJS_Dr_Visite=$BPJS_Labor=$BPJS_Penerimaan_HCU=$BPJS_Transportasi=$BPJS_Medical=$BPJS_Piutang=$BPJS_Penerimaan_Obat=$BPJS_Perasat=$BPJS_Insentif=$BPJS_Jasa=$BPJS_Penerimaan_Rontgen=$BPJS_Penerimaan_USG=$RJ_Labor=$RJ_EKG=$RJ_Karcis_IGD=$RJ_Jasa_Tindakan=$RJ_Penerimaan_Obat=$RJ_Karcis=$Penerimaan_Lain=0?>
 									<?php foreach($hasil as $key => $value) {?>
 												
 										<?php
@@ -140,6 +142,12 @@
 											{
 												$BPJS_Persentase = $value['Biaya'];
 											}
+
+											elseif($value['Item_Transaksi'] === 'BPJS - Jasa dr utk RS dari Jasa Visite') 
+											{
+												$BPJS_Dr_Visite = $value['Biaya'];
+											}
+
 											elseif($value['Item_Transaksi'] === 'BPJS - Labor Rawat Nginap')
 										  	{
 										  		$BPJS_Labor = $value['Biaya'];
@@ -205,35 +213,35 @@
 
 											elseif($value['Item_Transaksi'] === 'Rawat Jalan - Labor Rawat Jalan')
 											{
-												$VK_Persalinan = $value['Biaya'];
+												$RJ_Labor = $value['Biaya'];
 											}
 											elseif($value['Item_Transaksi'] === 'Rawat Jalan - EKG Rawat Jalan + Rawat Inap')
 										  	{
-										  		$VK_Perawatan = $value['Biaya'];
+										  		$RJ_EKG = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'Rawat Jalan - Karcis IGD Rawat Jalan + Rawat Inap')
 											{
-												$VK_Jasa = $value['Biaya'];
+												$RJ_Karcis_IGD = $value['Biaya'];
 											}										 
 										  
 											elseif($value['Item_Transaksi'] === 'Rawat Jalan - Jasa Tindakan Rawat Jalan') 
 											{
-												$OK_Jasa = $value['Biaya'];
+												$RJ_Jasa_Tindakan = $value['Biaya'];
 											}
 											elseif($value['Item_Transaksi'] === 'Rawat Jalan - Penerimaan Obat-Obatan Rawat Jalan') 
 										  	{
-										  		$OK_Monitor = $value['Biaya'];
+										  		$RJ_Penerimaan_Obat = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'Rawat Jalan - Karcis Rawat Jalan')
 											{
-												$OK_Couter = $value['Biaya'];
+												$RJ_Karcis = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'Penerimaan Lain-Lain')
 											{
-												$OK_RR = $value['Biaya'];
+												$Penerimaan_Lain = $value['Biaya'];
 											}
 
 										 }?>
@@ -284,21 +292,10 @@
 											<br>
 
 											</td>
-											<td> 
-											<?php foreach($hasil as $key => $value) {?>
-
-												<?php  if($value['Item_Transaksi'] === 'VK- Persalinan') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'VK- Perawatan Bayi') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'VK- Jasa VK') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-
-
-											<?php }?>
+											<td>	
+												<br> <?php echo $VK_Persalinan; ?>
+												<br> <?php echo $VK_Perawatan; ?>
+												<br> <?php echo $VK_Jasa; ?>
 											</td>
 
 										</tr>
@@ -314,21 +311,12 @@
 
 											</td>
 											<td>
-											<?php foreach($hasil as $key => $value) {?>
 												<br>
-												<?php  if($value['Item_Transaksi'] === 'OK- Jasa OK') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'OK- Penerimaan Alat Monitor') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'OK- Penerimaan Alat Couter') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'OK- Penerimaan RR') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-											<?php }?>
+												<br> <?php echo $OK_Jasa; ?>												
+												<br> <?php echo $OK_Monitor; ?>
+												<br> <?php echo $OK_Couter; ?>
+												<br> <?php echo $OK_RR; ?>
+												
 											</td>
 											
 
@@ -361,61 +349,27 @@
 
 											</td>
 											<td>
-											<?php foreach($hasil as $key => $value) {?>											
-												<?php  if($value['Item_Transaksi'] === 'Rawat Inap - VIP') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'Rawat Inap - Kelas I') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'Rawat Inap - Kelas II') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'Rawat Inap - Kelas III') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
+													<br>									
+													<br> <?php echo $VIP; ?>
+													<br> <?php echo $Kelas_I; ?>
+													<br> <?php echo $Kelas_II; ?>
+													<br> <?php echo $Kelas_III; ?>
+													<br>
+													<br>
+													<br> <?php echo $BPJS_Persentase; ?>
+													<br> <?php echo $BPJS_Dr_Visite; ?>
+													<br> <?php echo $BPJS_Labor; ?>
+													<br> <?php echo $BPJS_Penerimaan_HCU; ?>
+													<br> <?php echo $BPJS_Transportasi; ?>
+													<br> <?php echo $BPJS_Medical; ?>
+													<br> <?php echo $BPJS_Piutang; ?>
+													<br> <?php echo $BPJS_Penerimaan_Obat; ?>
+													<br> <?php echo $BPJS_Perasat; ?>
+													<br> <?php echo $BPJS_Insentif; ?>
+													<br> <?php echo $BPJS_Jasa; ?>
+													<br> <?php echo $BPJS_Penerimaan_Rontgen; ?>
+													<br> <?php echo $BPJS_Penerimaan_USG; ?>
 												
-												<?php  if($value['Item_Transaksi'] === 'BPJS - Persentase dr dari pasien') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'BPJS - Labor Rawat Nginap') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-
-												<?php  if($value['Item_Transaksi'] === 'BPJS - Penerimaan HCU') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'BPJS - Transportasi') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'BPJS - Medical Record') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'BPJS - Piutang yang diterima') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'BPJS - Penerimaan Obat - Obat Rawat Inap') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'BPJS - Perasat') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-
-												<?php  if($value['Item_Transaksi'] === 'BPJS - Insentif obat rawat inap + rawat jalan') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'BPJS - Jasa Pelayanan') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-
-												<?php  if($value['Item_Transaksi'] === 'BPJS - BPJS - Penerimaan Rotgen') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-												<?php  if($value['Item_Transaksi'] === 'BPJS - Penerimaan USG') {?>
-													<br> <?php echo $value['Biaya']; ?>
-												<?php } ?>
-
-											<?php }?>
 											</td>
 											
 
@@ -433,7 +387,14 @@
 											<br>
 
 											</td>
-											<td>aaa</td>
+											<td>
+												<br> <?php echo $RJ_Labor; ?>
+												<br> <?php echo $RJ_EKG; ?>
+												<br> <?php echo $RJ_Karcis_IGD; ?>
+												<br> <?php echo $RJ_Jasa_Tindakan; ?>
+												<br> <?php echo $RJ_Penerimaan_Obat; ?>
+												<br> <?php echo $RJ_Karcis; ?>
+											</td>
 											
 
 										</tr>
@@ -443,7 +404,7 @@
 											<td><?php echo "Penerimaan Lain-Lain"?>;
 											
 											</td>
-											<td>aaa</td>
+											<td><?php echo $Penerimaan_Lain; ?></td>
 											
 
 										</tr>
@@ -487,7 +448,7 @@ $(document).ready(function(){
 	function changeDataPem()
 	{
 		
-		window.location="<?php echo site_url(); ?>/report/laporan_harian/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val()+"/"+$('#jenisOpt').find(":selected").val()
+		window.location="<?php echo site_url(); ?>/report/laporan_bulanan/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val()+"/"+$('#jenisOpt').find(":selected").val()
 		
 	}
 	$('#tahunOpt').change(function(){

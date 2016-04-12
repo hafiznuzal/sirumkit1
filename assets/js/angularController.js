@@ -23,6 +23,7 @@ app.controller('formController', function($scope,$http) {
     menu.push({'value':'Rawat Inap - Kelas III','name':'Rawat Inap - Kelas III'});
 
     menu.push({'value':'BPJS - Persentase dr dari pasien','name':'BPJS - Persentase dr dari pasien'});
+    menu.push({'value':'BPJS - Jasa dr utk RS dari Jasa Visite','name':'BPJS - Jasa dr utk RS dari Jasa Visite'});
     menu.push({'value':'BPJS - Labor Rawat Nginap','name':'BPJS - Labor Rawat Nginap'});
     menu.push({'value':'BPJS - Penerimaan HCU','name':'BPJS - Penerimaan HCU'});
     menu.push({'value':'BPJS - Transportasi','name':'BPJS - Transportasi'});

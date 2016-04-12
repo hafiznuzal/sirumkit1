@@ -77,7 +77,11 @@ class Report extends CI_Controller
 			
 
 			$this->load->view('template/admin_header',$this->sesi);
-			$tanggal_lengkap = date("Y-m");
+			if ($bulan < 10) {
+				$tanggal_lengkap = $tahun."-0".$bulan;
+			}
+			else $tanggal_lengkap = $tahun."-".$bulan;
+			
 			$this->load->model('m_report');
 
 
@@ -93,6 +97,38 @@ class Report extends CI_Controller
 			$data['jenis']=$jenisopt;
 			
 			$this->load->view('laporan-bulanan',$data);
+			$this->load->view('template/admin_footer');
+			print_r($tanggal_lengkap);
+
+		}
+		
+		else redirect(base_url('login'));
+
+	}
+
+	public function laporan_tahunan($tahun,$jenisopt)
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			
+
+			$this->load->view('template/admin_header',$this->sesi);
+			$tanggal_lengkap = $tahun;
+			$this->load->model('m_report');
+
+
+
+			if ($jenisopt == 1) {
+				$data['hasil'] = $this->m_report->tabel_bln_th_msk($tanggal_lengkap);
+			}
+        	else $data['hasil'] = $this->m_report->tabel_bln_th_klr($tanggal_lengkap);
+        	
+			// $data['tanggal_s']=$tanggal;
+			// $data['bulan_s']=$bulan;
+			$data['tahun_s']=$tahun;
+			$data['jenis']=$jenisopt;
+			
+			$this->load->view('laporan-tahunan',$data);
 			$this->load->view('template/admin_footer');
 
 

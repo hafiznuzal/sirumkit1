@@ -49,10 +49,16 @@
 
 									    
 									</select>
-									</div>										
+									</div>	
+
+								
+
+											
+
+
 									<div class="col-md-2">
 									<label>Tahun:</label> 
-									<select class="form-control form-inline" id="bulanOpt" name="bulan">
+									<select class="form-control form-inline" id="tahunOpt" name="tahun">
 									 	<option disabled selected><?php echo $tahun_s; ?></option>
 									 	<?php  for ($i=2015; $i <=$tahun ; $i++) { ?>
 
@@ -62,128 +68,163 @@
 									</div> 
 									
 									
-									<?php $VK_Persalinan=$VK_Perawatan=$VK_Jasa =$OK_Jasa=$OK_Monitor=$OK_Couter=$OK_RR=$VIP=$Kelas_I=$Kelas_II=$Kelas_III=$BPJS_Persentase=$BPJS_Dr_Visite=$BPJS_Labor=$BPJS_Penerimaan_HCU=$BPJS_Transportasi=$BPJS_Medical=$BPJS_Piutang=$BPJS_Penerimaan_Obat=$BPJS_Perasat=$BPJS_Insentif=$BPJS_Jasa=$BPJS_Penerimaan_Rontgen=$BPJS_Penerimaan_USG=$RJ_Labor=$RJ_EKG=$RJ_Karcis_IGD=$RJ_Jasa_Tindakan=$RJ_Penerimaan_Obat=$RJ_Karcis=$Penerimaan_Lain=0?>
-									<?php foreach($hasil as $key => $value) {?>
+								<?php for ($i=1; $i<13 ; $i++) { 
+										
+
+									$VK_Persalinan[$i] = 0;
+									$VK_Perawatan[$i] = 0;
+									$VK_Jasa[$i] = 0;
+									$OK_Jasa[$i] = 0;
+									$OK_Monitor[$i] = 0;
+									$OK_Couter[$i] = 0;
+									$OK_RR[$i] = 0;
+									$VIP[$i] = 0;
+									$Kelas_I[$i] = 0;
+									$Kelas_I[$i] = 0;
+									$Kelas_II[$i] = 0;
+									$Kelas_III[$i] = 0;
+									$BPJS_Persentase[$i] = 0;
+									$BPJS_Dr_Visite[$i] = 0;									
+									$BPJS_Labor[$i] = 0;
+									$BPJS_Penerimaan_HCU[$i] = 0;
+									$BPJS_Transportasi[$i] = 0;
+									$BPJS_Medical[$i] = 0;
+									$BPJS_Piutang[$i] = 0;
+									$BPJS_Penerimaan_Obat[$i] = 0;
+									$BPJS_Perasat[$i] = 0;
+									$BPJS_Insentif[$i] = 0;
+									$BPJS_Jasa[$i] = 0;
+									$BPJS_Penerimaan_Rontgen[$i] = 0;
+									$BPJS_Penerimaan_USG[$i] = 0;
+									$RJ_Labor[$i] = 0;
+									$RJ_EKG[$i] = 0;
+									$RJ_Karcis_IGD[$i] = 0;
+									$RJ_Jasa_Tindakan[$i] = 0;
+									$RJ_Penerimaan_Obat[$i] = 0;
+									$RJ_Karcis[$i] = 0;
+									$Penerimaan_Lain[$i] = 0;
+
+									foreach($hasil[$i] as $key => $value) {?>
 												
 										<?php
 
 											if($value['Item_Transaksi'] === 'VK- Persalinan')
 											{
-												$VK_Persalinan = $value['Biaya'];
+												$VK_Persalinan[$i] = $value['Biaya'];
 											}
 											elseif($value['Item_Transaksi'] === 'VK- Perawatan Bayi') 
 										  	{
-										  		$VK_Perawatan = $value['Biaya'];
+										  		$VK_Perawatan[$i] = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'VK- Jasa VK')
 											{
-												$VK_Jasa = $value['Biaya'];
+												$VK_Jasa[$i] = $value['Biaya'];
 											}
-										 
+										 	
 										  
 											elseif($value['Item_Transaksi'] === 'OK- Jasa OK') 
 											{
-												$OK_Jasa = $value['Biaya'];
+												$OK_Jasa[$i] = $value['Biaya'];
 											}
 											elseif($value['Item_Transaksi'] === 'OK- Penerimaan Alat Monitor') 
 										  	{
-										  		$OK_Monitor = $value['Biaya'];
+										  		$OK_Monitor[$i] = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'OK- Penerimaan Alat Couter') 
 											{
-												$OK_Couter = $value['Biaya'];
+												$OK_Couter[$i] = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'OK- Penerimaan RR') 
 											{
-												$OK_RR = $value['Biaya'];
+												$OK_RR[$i] = $value['Biaya'];
 											}
 
 
 
 											elseif($value['Item_Transaksi'] === 'Rawat Inap - VIP') 
 											{
-												$VIP = $value['Biaya'];
+												$VIP[$i] = $value['Biaya'];
 											}
 											elseif($value['Item_Transaksi'] === 'Rawat Inap - Kelas I')
 										  	{
-										  		$Kelas_I = $value['Biaya'];
+										  		$Kelas_I[$i] = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'Rawat Inap - Kelas II')
 
 											{
-												$Kelas_II = $value['Biaya'];
+												$Kelas_II[$i] = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'Rawat Inap - Kelas III')
 
 											{
-												$Kelas_III = $value['Biaya'];
+												$Kelas_III[$i] = $value['Biaya'];
 											}
 
 											elseif($value['Item_Transaksi'] === 'BPJS - Persentase dr dari pasien') 
 											{
-												$BPJS_Persentase = $value['Biaya'];
+												$BPJS_Persentase[$i] = $value['Biaya'];
 											}
 
 											elseif($value['Item_Transaksi'] === 'BPJS - Jasa dr utk RS dari Jasa Visite') 
 											{
-												$BPJS_Dr_Visite = $value['Biaya'];
+												$BPJS_Dr_Visite[$i] = $value['Biaya'];
 											}
 
 											elseif($value['Item_Transaksi'] === 'BPJS - Labor Rawat Nginap')
 										  	{
-										  		$BPJS_Labor = $value['Biaya'];
+										  		$BPJS_Labor[$i] = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'BPJS - Penerimaan HCU')
 											{
-												$BPJS_Penerimaan_HCU = $value['Biaya'];
+												$BPJS_Penerimaan_HCU[$i] = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'BPJS - Transportasi') 
 											{
-												$BPJS_Transportasi = $value['Biaya'];
+												$BPJS_Transportasi[$i] = $value['Biaya'];
 											}
 
 											elseif($value['Item_Transaksi'] === 'BPJS - Medical Record')
 											{
-												$BPJS_Medical = $value['Biaya'];
+												$BPJS_Medical[$i] = $value['Biaya'];
 											}
 											elseif($value['Item_Transaksi'] === 'BPJS - Piutang yang diterima')
 											{
-												$BPJS_Piutang = $value['Biaya'];
+												$BPJS_Piutang[$i] = $value['Biaya'];
 											}
 											elseif($value['Item_Transaksi'] === 'BPJS - Penerimaan Obat - Obat Rawat Inap')
 										  	{
-										  		$BPJS_Penerimaan_Obat = $value['Biaya'];
+										  		$BPJS_Penerimaan_Obat[$i] = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'BPJS - Perasat')
 											{
-												$BPJS_Perasat = $value['Biaya'];
+												$BPJS_Perasat[$i] = $value['Biaya'];
 											}										 
 										  
 											elseif($value['Item_Transaksi'] === 'BPJS - Insentif obat rawat inap + rawat jalan') 
 											{
-												$BPJS_Insentif = $value['Biaya'];
+												$BPJS_Insentif[$i] = $value['Biaya'];
 											}
 											elseif($value['Item_Transaksi'] === 'BPJS - Jasa Pelayanan') 
 										  	{
-										  		$BPJS_Jasa = $value['Biaya'];
+										  		$BPJS_Jasa[$i] = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'BPJS - Penerimaan Rotgen')
 											{
-												$BPJS_Penerimaan_Rontgen = $value['Biaya'];
+												$BPJS_Penerimaan_Rontgen[$i] = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'BPJS - Penerimaan USG')
 											{
-												$BPJS_Penerimaan_USG = $value['Biaya'];
+												$BPJS_Penerimaan_USG[$i] = $value['Biaya'];
 											}
 
 
@@ -199,38 +240,41 @@
 
 											elseif($value['Item_Transaksi'] === 'Rawat Jalan - Labor Rawat Jalan')
 											{
-												$RJ_Labor = $value['Biaya'];
+												$RJ_Labor[$i] = $value['Biaya'];
 											}
 											elseif($value['Item_Transaksi'] === 'Rawat Jalan - EKG Rawat Jalan + Rawat Inap')
 										  	{
-										  		$RJ_EKG = $value['Biaya'];
+										  		$RJ_EKG[$i] = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'Rawat Jalan - Karcis IGD Rawat Jalan + Rawat Inap')
 											{
-												$RJ_Karcis_IGD = $value['Biaya'];
+												$RJ_Karcis_IGD[$i] = $value['Biaya'];
 											}										 
 										  
 											elseif($value['Item_Transaksi'] === 'Rawat Jalan - Jasa Tindakan Rawat Jalan') 
 											{
-												$RJ_Jasa_Tindakan = $value['Biaya'];
+												$RJ_Jasa_Tindakan[$i] = $value['Biaya'];
 											}
 											elseif($value['Item_Transaksi'] === 'Rawat Jalan - Penerimaan Obat-Obatan Rawat Jalan') 
 										  	{
-										  		$RJ_Penerimaan_Obat = $value['Biaya'];
+										  		$RJ_Penerimaan_Obat[$i] = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'Rawat Jalan - Karcis Rawat Jalan')
 											{
-												$RJ_Karcis = $value['Biaya'];
+												$RJ_Karcis[$i] = $value['Biaya'];
 											}
 										 
 										  	elseif($value['Item_Transaksi'] === 'Penerimaan Lain-Lain')
 											{
-												$Penerimaan_Lain = $value['Biaya'];
+												$Penerimaan_Lain[$i] = $value['Biaya'];
 											}
 
-										 }?>
+										 }
+
+
+									 } ?>
 									
 
 
@@ -259,9 +303,20 @@
 											
 										</tr> -->
 										<tr>
-											<th style="min-width: 150px;">No </th>
+											<th style="min-width: 50px;">No </th>
 											<th style="min-width: 300px;">Uraian</th>
-											<th style="min-width: 200px;">Debet</th>
+											<th style="min-width: 150px;">Januari</th>
+											<th style="min-width: 150px;">Februari</th>
+											<th style="min-width: 150px;">Maret</th>
+											<th style="min-width: 150px;">April</th>
+											<th style="min-width: 150px;">Mei</th>
+											<th style="min-width: 150px;">Juni</th>
+											<th style="min-width: 150px;">Juli</th>
+											<th style="min-width: 150px;">Agustus</th>
+											<th style="min-width: 150px;">September</th>
+											<th style="min-width: 150px;">Oktober</th>
+											<th style="min-width: 150px;">November</th>
+											<th style="min-width: 150px;">Desember</th>
 										</tr>
 											
 										
@@ -280,12 +335,17 @@
 											<br>
 
 											</td>
-											<td>	
-												<br> <?php echo $VK_Persalinan; ?>
-												<br> <?php echo $VK_Perawatan; ?>
-												<br> <?php echo $VK_Jasa; ?>
+											<?php for ($k=1; $k <13 ; $k++) 
+											{ ?>
+												<td>
+												<br> <?php echo $VK_Persalinan[$k]; ?>
+												<br> <?php echo $VK_Perawatan[$k]; ?>
+												<br> <?php echo $VK_Jasa[$k]; ?>
 											</td>
 
+											<?php
+											} ?>
+											
 										</tr>
 
 										<tr class="odd gradeX">
@@ -298,15 +358,18 @@
 											<br>
 
 											</td>
+											<?php for ($k=1; $k <13 ; $k++) 
+											{ ?>
 											<td>
 												<br>
-												<br> <?php echo $OK_Jasa; ?>												
-												<br> <?php echo $OK_Monitor; ?>
-												<br> <?php echo $OK_Couter; ?>
-												<br> <?php echo $OK_RR; ?>
+												<br> <?php echo $OK_Jasa[$k]; ?>												
+												<br> <?php echo $OK_Monitor[$k]; ?>
+												<br> <?php echo $OK_Couter[$k]; ?>
+												<br> <?php echo $OK_RR[$k]; ?>
 												
 											</td>
-											
+											<?php
+											} ?>
 
 										</tr>
 
@@ -336,30 +399,34 @@
 											<br>
 
 											</td>
+											<?php for ($k=1; $k <13 ; $k++) 
+											{ ?>
+											
 											<td>
 													<br>									
-													<br> <?php echo $VIP; ?>
-													<br> <?php echo $Kelas_I; ?>
-													<br> <?php echo $Kelas_II; ?>
-													<br> <?php echo $Kelas_III; ?>
+													<br> <?php echo $VIP[$k]; ?>
+													<br> <?php echo $Kelas_I[$k]; ?>
+													<br> <?php echo $Kelas_II[$k]; ?>
+													<br> <?php echo $Kelas_III[$k]; ?>
 													<br>
 													<br>
-													<br> <?php echo $BPJS_Persentase; ?>
-													<br> <?php echo $BPJS_Dr_Visite; ?>
-													<br> <?php echo $BPJS_Labor; ?>
-													<br> <?php echo $BPJS_Penerimaan_HCU; ?>
-													<br> <?php echo $BPJS_Transportasi; ?>
-													<br> <?php echo $BPJS_Medical; ?>
-													<br> <?php echo $BPJS_Piutang; ?>
-													<br> <?php echo $BPJS_Penerimaan_Obat; ?>
-													<br> <?php echo $BPJS_Perasat; ?>
-													<br> <?php echo $BPJS_Insentif; ?>
-													<br> <?php echo $BPJS_Jasa; ?>
-													<br> <?php echo $BPJS_Penerimaan_Rontgen; ?>
-													<br> <?php echo $BPJS_Penerimaan_USG; ?>
+													<br> <?php echo $BPJS_Persentase[$k]; ?>
+													<br> <?php echo $BPJS_Dr_Visite[$k]; ?>
+													<br> <?php echo $BPJS_Labor[$k]; ?>
+													<br> <?php echo $BPJS_Penerimaan_HCU[$k]; ?>
+													<br> <?php echo $BPJS_Transportasi[$k]; ?>
+													<br> <?php echo $BPJS_Medical[$k]; ?>
+													<br> <?php echo $BPJS_Piutang[$k]; ?>
+													<br> <?php echo $BPJS_Penerimaan_Obat[$k]; ?>
+													<br> <?php echo $BPJS_Perasat[$k]; ?>
+													<br> <?php echo $BPJS_Insentif[$k]; ?>
+													<br> <?php echo $BPJS_Jasa[$k]; ?>
+													<br> <?php echo $BPJS_Penerimaan_Rontgen[$k]; ?>
+													<br> <?php echo $BPJS_Penerimaan_USG[$k]; ?>
 												
 											</td>
-											
+											<?php
+											} ?>
 
 										</tr>
 
@@ -375,15 +442,19 @@
 											<br>
 
 											</td>
+											<?php for ($k=1; $k <13 ; $k++) 
+											{ ?>
 											<td>
-												<br> <?php echo $RJ_Labor; ?>
-												<br> <?php echo $RJ_EKG; ?>
-												<br> <?php echo $RJ_Karcis_IGD; ?>
-												<br> <?php echo $RJ_Jasa_Tindakan; ?>
-												<br> <?php echo $RJ_Penerimaan_Obat; ?>
-												<br> <?php echo $RJ_Karcis; ?>
+												<br> <?php echo $RJ_Labor[$k]; ?>
+												<br> <?php echo $RJ_EKG[$k]; ?>
+												<br> <?php echo $RJ_Karcis_IGD[$k]; ?>
+												<br> <?php echo $RJ_Jasa_Tindakan[$k]; ?>
+												<br> <?php echo $RJ_Penerimaan_Obat[$k]; ?>
+												<br> <?php echo $RJ_Karcis[$k]; ?>
 											</td>
-											
+											<?php
+											} ?>
+
 
 										</tr>
 
@@ -392,8 +463,11 @@
 											<td><?php echo "Penerimaan Lain-Lain"?>;
 											
 											</td>
-											<td><?php echo $Penerimaan_Lain; ?></td>
-											
+											<?php for ($k=1; $k <13 ; $k++) 
+											{ ?>
+											<td><?php echo $Penerimaan_Lain[$k]; ?></td>
+											<?php
+											} ?>
 
 										</tr>
 

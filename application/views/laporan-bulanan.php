@@ -35,7 +35,7 @@
 						<div class="panel-body">
 							<div class="form-group panel-default">
 								<div class="row">
-																		<div class="col-md-2"> 
+									<div class="col-md-2"> 
 									<label>Jenis Transaksi:</label> 
 									<select class="form-control form-inline" id="jenisOpt" name="JenisTransaksi">
 										<?php if ($jenis == 1) {?>
@@ -76,6 +76,17 @@
 									</select>
 									</div> 
 
+									
+									<div class="col-md-3 pull-right"> 
+										<br>
+										
+										<a href="#" class="pull-right" id="excelPemDownload">Download Excel <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
+										<!-- <br>
+										<a href="#" class="pull-right" id="pdfPemDownload">Download PDF <img src="<?php  echo base_url('assets/img/pdf.png')?>"></a> -->
+
+
+									</div>
+								</div>
 									<?php $VK_Persalinan=$VK_Perawatan=$VK_Jasa =$OK_Jasa=$OK_Monitor=$OK_Couter=$OK_RR=$VIP=$Kelas_I=$Kelas_II=$Kelas_III=$BPJS_Persentase=$BPJS_Dr_Visite=$BPJS_Labor=$BPJS_Penerimaan_HCU=$BPJS_Transportasi=$BPJS_Medical=$BPJS_Piutang=$BPJS_Penerimaan_Obat=$BPJS_Perasat=$BPJS_Insentif=$BPJS_Jasa=$BPJS_Penerimaan_Rontgen=$BPJS_Penerimaan_USG=$RJ_Labor=$RJ_EKG=$RJ_Karcis_IGD=$RJ_Jasa_Tindakan=$RJ_Penerimaan_Obat=$RJ_Karcis=$Penerimaan_Lain=0?>
 									<?php foreach($hasil as $key => $value) {?>
 												
@@ -250,16 +261,6 @@
 
 
 
-									<div class="col-md-3 pull-right"> 
-										<br>
-										
-										<a href="#" class="pull-right" id="excelPemDownload">Download Excel <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
-										<!-- <br>
-										<a href="#" class="pull-right" id="pdfPemDownload">Download PDF <img src="<?php  echo base_url('assets/img/pdf.png')?>"></a> -->
-
-
-									</div>
-								</div>
 							</div>
 							<div class ="table">
 								<table id="bulanan" class="table table-striped table-bordered">

@@ -43,7 +43,10 @@ class Report extends CI_Controller
 		{
 
 			$this->load->view('template/admin_header',$this->sesi);
-			$tanggal_lengkap = date("Y-m-d");
+			if ($bulan < 10) {
+				$tanggal_lengkap = $tahun."-0".$bulan."-".$tanggal;
+			}
+			else $tanggal_lengkap = $tahun."-".$bulan."-".$tanggal;
 			$this->load->model('m_report');
 
 
@@ -113,15 +116,30 @@ class Report extends CI_Controller
 			
 
 			$this->load->view('template/admin_header',$this->sesi);
-			$tanggal_lengkap = $tahun;
+			// $tanggal_lengkap = $tahun;
 			$this->load->model('m_report');
 
 
 
 			if ($jenisopt == 1) {
-				$data['hasil'] = $this->m_report->tabel_bln_th_msk($tanggal_lengkap);
+				for ($i=1; $i <13 ; $i++) {
+				 	$tanggal_lengkap = $tahun."-0".$i;
+				 	// print_r($tanggal_lengkap);
+					$data['hasil'][$i] = $this->m_report->tabel_bln_th_msk($tanggal_lengkap);
+					print_r($data['hasil'][$i]);
+				}
+
 			}
-        	else $data['hasil'] = $this->m_report->tabel_bln_th_klr($tanggal_lengkap);
+        	else
+        	{
+  				for ($i=1; $i <13 ; $i++) {
+				 	$tanggal_lengkap = $tahun."-0".$i;
+				 	// print_r($tanggal_lengkap);
+					$data['hasil'][$i] = $this->m_report->tabel_bln_th_klr($tanggal_lengkap);
+					print_r($data['hasil'][$i]);
+				}      		
+        	} 
+        	
         	
 			// $data['tanggal_s']=$tanggal;
 			// $data['bulan_s']=$bulan;

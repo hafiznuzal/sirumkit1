@@ -33,7 +33,7 @@
 	<!-- Custom Fonts -->
 	<link href="<?php echo base_url('assets/font-awesome-4.2.0/css/font-awesome.min.css')?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/sweetalert/dist/sweetalert.css')?>" rel="stylesheet">
-
+	<link href="<?php echo base_url('assets/css/swal-forms.css')?>" rel="stylesheet">
 	<!-- jQuery -->
 	<script src="<?php echo base_url('assets/js/jquery.js')?>"></script>
 
@@ -51,11 +51,12 @@
 	<script src="<?php echo base_url('assets/js/plugins/dataTables/dataTables.bootstrap.js')?>"></script>
     <script src="<?php echo base_url('assets/js/ajaxfileupload.js')?>"></script>
     <script src="<?php echo base_url('assets/js/bootbox.js')?>"></script>
-
+    <!-- <script src="<?php echo base_url('assets/js/sweet-alert.js')?>"></script> -->
+    
 	<!--LEAFLET-->
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/leaflet.css')?>" />
 	
-	<script src="<?php echo base_url('assets/js/leaflet.js')?>"></script>
+	<!-- <script src="<?php echo base_url('assets/js/leaflet.js')?>"></script> -->
 
 	
 
@@ -201,6 +202,7 @@
 			<div class="navbar-default sidebar" role="navigation">
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
+					<?php $jenisopt = 1;  ?>
 						<li>
 							<a href="<?php echo base_url('/admin/index');?>"><i class="fa fa-home fa-fw"></i> Halaman Utama</a>
 						</li>
@@ -209,7 +211,7 @@
 							<a href="<?php echo base_url('/admin/pasien');?>"><i class="fa fa-wheelchair fa-fw"></i> Transaksi</a>
 						</li>
 						<li>
-							<a href="<?php echo base_url('/admin/edit_transaksi');?>"><i class="fa fa-pencil-square-o fa-fw"></i> Edit Transaksi</a>
+							<a href="<?php echo base_url('/admin/edit_transaksi').'/'.$jenisopt?>"><i class="fa fa-pencil-square-o fa-fw"></i> Edit Transaksi</a>
 						</li>
 						<!-- <li>
 							<a href="<?php echo site_url('/admin/pengembang');?>"><i class="fa fa-stethoscope fa-fw"></i> Rekam Medik</a>
@@ -231,7 +233,7 @@
 									
 	                            </ul>
                         </li> -->
-						<?php $jenisopt = 1;  ?>
+						
 						<li>
 							<a href="#"><i class="fa fa-file-text fa-fw"></i> Laporan<span class="fa arrow"></span></a>
 	                            <ul class="nav nav-second-level">
@@ -268,6 +270,8 @@
 						$("#formact").submit();
 					});
 				});
+
+				
 			</script>
 		</nav>
 

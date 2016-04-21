@@ -149,9 +149,9 @@ class Admin extends CI_Controller
 			}
         	else $data['hasil'] = $this->m_report->tabel_harian_keluar($tanggal_lengkap);
         	// $this->load->view('/admin/laporan_harian',$data);
-			$data['tanggal_s']=$tanggal;
-			$data['bulan_s']=$bulan;
-			$data['tahun_s']=$tahun;
+			// $data['tanggal_s']=$tanggal;
+			// $data['bulan_s']=$bulan;
+			// $data['tahun_s']=$tahun;
 			$data['jenis']=$jenisopt;
 			// print_r($data1);
 			$this->load->view('edit-transaksi',$data);

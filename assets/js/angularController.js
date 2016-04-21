@@ -127,4 +127,34 @@ app.controller('formController', function($scope,$http) {
                 );
         });
     }
+   
+   $scope.editButton = function (id_transaksi,no_transaksi,item_transaksi,uraian,biaya) {
+ 
+    swal.withForm({
+        title: 'More complex Swal-Forms example',
+        text: 'This has different types of inputs',
+        showCancelButton: true,
+        confirmButtonColor: '#DD6B55',
+        confirmButtonText: 'Get form data!',
+        closeOnConfirm: true,
+        formFields: [
+          { id: 'uraian', placeholder: 'Nomor Transaksi',value:no_transaksi,title:'Nomor Transaksi' },
+          { id: 'uraian', placeholder: 'Uraian',value:uraian,title:'Uraian ' },
+          { id: 'biaya', placeholder: 'Biaya',value:biaya,title:'Biaya '  },
+          { id: 'select', type: 'select', options: [
+              {value: 'VK- Persalinan', text: 'VK- Persalinan'},
+              {value: 'test2', text: 'test2'},
+              {value: 'test3', text: 'test3'},
+              {value: 'test4', text: 'test4'},
+              {value: 'test5', text: 'test5'}
+          ]}
+          
+        ]
+      }, function (isConfirm) {
+        // do whatever you want with the form data
+        console.log(this.swalForm) // { name: 'user name', nickname: 'what the user sends' }
+      })
+    setTimeout(function(){ $('.sweet-alert.showSweetAlert.visible').css('margin-top',"-300px");console.log('change') }, 500);
+    
+    }
 });

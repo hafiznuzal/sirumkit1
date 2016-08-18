@@ -80,7 +80,8 @@
 									<div class="col-md-3 pull-right"> 
 										<br>
 										
-										<a href="#" class="pull-right" id="excelPemDownload">Download Excel <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
+										<a href="#" class="pull-right" id="excelPemDownload">Laporan Bulanan <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
+										<a href="#" class="pull-right" id="excelPemDownloadRekap">Rekapitulasi Bulanan <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
 										<!-- <br>
 										<a href="#" class="pull-right" id="pdfPemDownload">Download PDF <img src="<?php  echo base_url('assets/img/pdf.png')?>"></a> -->
 
@@ -312,7 +313,6 @@
 
 											</td>
 											<td>
-												<br>
 												<br> <?php echo $OK_Jasa; ?>												
 												<br> <?php echo $OK_Monitor; ?>
 												<br> <?php echo $OK_Couter; ?>
@@ -439,7 +439,11 @@ $(document).ready(function(){
 	});			
 
 	$('#excelPemDownload').click(function(){
-		window.location="<?php echo base_url(); ?>report/rekapitulasi_lahan_kecamatan_excel/"+$('#tahunOpt').val()+"/"+$('#periodeOpt').val();
+		window.location="<?php echo site_url(); ?>report/transaksi_bulanan_excel/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val();
+	})
+
+	$('#excelPemDownloadRekap').click(function(){
+		window.location="<?php echo site_url(); ?>report/rekapitulasi_transaksi_bulanan_excel/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val();
 	})
 
 	$('#pdfPemDownload').click(function(){

@@ -154,26 +154,6 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	$('#harian').DataTable( {
-			"scrollX": true,
-			"scrollY": "400px"
-	});			
-
-	$('#excelPemDownload').click(function(){
-		window.location="<?php echo site_url(); ?>report/rekapitulasi_lahan_kecamatan_excel/"+$('#tahunOpt').val()+"/"+$('#periodeOpt').val();
-	})
-
-	$('#pdfPemDownload').click(function(){
-		window.location="<?php echo site_url(); ?>create_pdf/rekapitulasi_lahan_kecamatan_pdf/"+$('#tahunOpt').val()+"/"+$('#periodeOpt').val();
-	})
-	
-	function changeDataPem()
-	{
-		alert($('#jenisOpt').find(":selected").val())
-		// if($('#tahunOpt').val()!=null || $('#bulanOpt').val() !=null && $('#tanggalOpt').val() != null)
-		window.location="<?php echo site_url(); ?>/report/laporan_harian/"+$('#tanggalOpt').find(":selected").val()+"/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val()+"/"+$('#jenisOpt').find(":selected").val();
-		
-	}
 	$('#tahunOpt').change(function(){
 		
 		changeDataPem()
@@ -194,6 +174,28 @@ $(document).ready(function(){
 		
 		changeDataPem()
 	});
+
+	$('#harian').DataTable( {
+			"scrollX": true,
+			"scrollY": "400px"
+	});			
+
+	$('#excelPemDownload').click(function(){
+		window.location="<?php echo site_url(); ?>report/transaksi_harian_excel/"+$('#tanggalOpt').find(":selected").val()+"/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val();
+	})
+
+	$('#pdfPemDownload').click(function(){
+		window.location="<?php echo site_url(); ?>create_pdf/rekapitulasi_lahan_kecamatan_pdf/"+$('#tahunOpt').val()+"/"+$('#periodeOpt').val();
+	})
+	
+	function changeDataPem()
+	{
+		alert($('#jenisOpt').find(":selected").val())
+		// if($('#tahunOpt').val()!=null || $('#bulanOpt').val() !=null && $('#tanggalOpt').val() != null)
+		window.location="<?php echo site_url(); ?>/report/laporan_harian/"+$('#tanggalOpt').find(":selected").val()+"/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val()+"/"+$('#jenisOpt').find(":selected").val();
+		
+	}
+	
 
 
 

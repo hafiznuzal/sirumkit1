@@ -283,7 +283,10 @@
 									<div class="col-md-3 pull-right"> 
 										<br>
 										
-										<a href="#" class="pull-right" id="excelPemDownload">Download Excel <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
+										<a href="#" class="pull-right" id="excelPemDownloadOutI">LAPORAN PENGELUARAN SMT I <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
+										<a href="#" class="pull-right" id="excelPemDownloadOutII">LAPORAN PENGELUARAN SMT II <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
+										<a href="#" class="pull-right" id="excelPemDownloadInI">LAPORAN PENERIMAAN SMT I <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
+										<a href="#" class="pull-right" id="excelPemDownloadInII">LAPORAN PENERIMAAN SMT II <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
 										<!-- <br>
 										<a href="#" class="pull-right" id="pdfPemDownload">Download PDF <img src="<?php  echo base_url('assets/img/pdf.png')?>"></a> -->
 
@@ -501,6 +504,26 @@ $(document).ready(function(){
 
 	$('#excelPemDownload').click(function(){
 		window.location="<?php echo site_url(); ?>/report/laporan_tahunan_excel/"+$('#tahunOpt').find(":selected").val()+"/"+$('#jenisOpt').find(":selected").val();
+		
+	})
+
+	$('#excelPemDownloadOutI').click(function(){
+		window.location="<?php echo site_url(); ?>/report/rekapitulasi_transaksi_bulanan_excel_semester1_keluar/"+$('#tahunOpt').find(":selected").val();
+		
+	})
+
+	$('#excelPemDownloadOutII').click(function(){
+		window.location="<?php echo site_url(); ?>/report/rekapitulasi_transaksi_bulanan_excel_semester2_keluar/"+$('#tahunOpt').find(":selected").val();
+		
+	})
+
+	$('#excelPemDownloadInI').click(function(){
+		window.location="<?php echo site_url(); ?>/report/rekapitulasi_transaksi_bulanan_excel_semester1_masuk/"+$('#tahunOpt').find(":selected").val();
+		
+	})
+
+	$('#excelPemDownloadInII').click(function(){
+		window.location="<?php echo site_url(); ?>/report/rekapitulasi_transaksi_bulanan_excel_semester2_masuk/"+$('#tahunOpt').find(":selected").val();
 		
 	})
 

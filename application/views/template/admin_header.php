@@ -249,6 +249,10 @@
 	                                	<a href="<?php echo base_url('/report/laporan_tahunan').'/'.$tahun.'/'.$jenisopt?>" ><i class="fa fa-file-text-o fa-fw"></i> Laporan Tahunan</a>
 									</li>
 
+									 <li>
+	                                	<a href="<?php echo base_url('/report/laporan_lainlain').'/'.$bulan.'/'.$tahun.'/'.$jenisopt?>" ><i class="fa fa-file-text-o fa-fw"></i> Laporan Lain-Lain</a>
+									</li>
+
 	                            </ul>
                         </li>
 

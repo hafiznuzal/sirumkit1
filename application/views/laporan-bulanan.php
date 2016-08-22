@@ -1,4 +1,4 @@
-=<div id="page_container">
+<div id="page_container">
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12" style="color:#446CB3">

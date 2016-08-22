@@ -280,7 +280,7 @@
 
 
 
-									<div class="col-md-3 pull-right"> 
+									<div class="col-md-4 pull-right"> 
 										<br>
 										
 										<a href="#" class="pull-right" id="excelPemDownloadOutI">LAPORAN PENGELUARAN SMT I <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>

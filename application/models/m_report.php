@@ -252,6 +252,44 @@ class m_report extends CI_Model
 		// return $data;
 	}
 
+	public function tabel_bln_lainlain_th_msk($tanggal)
+	{
+		$sql = "SELECT Uraian,SUM(Biaya) AS Biaya 
+				FROM Transaksi
+				WHERE Jenis = 1 and Item_Transaksi like 'Penerimaan Lain-Lain' and Tanggal like '".$tanggal."%'";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function tabel_bln_lainlain_th_klr($tanggal)
+	{
+		$sql = "SELECT Uraian,SUM(Biaya) AS Biaya 
+				FROM Transaksi
+				WHERE Jenis = 2 and Item_Transaksi like 'Pengeluaran Lain-Lain' and Tanggal like '".$tanggal."%'";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}
+	public function jumlah_lainlain_masuk_perhari($tanggal)
+	{
+		$sql = "SELECT COUNT(Id_Transaksi) as Jumlah_Id
+				FROM transaksi
+				WHERE Jenis = 1 and Item_Transaksi like 'Penerimaan Lain-Lain' and Tanggal like '".$tanggal."%'";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}
+	public function jumlah_lainlain_keluar_perhari($tanggal)
+	{
+		$sql = "SELECT COUNT(Id_Transaksi) as Jumlah_Id
+				FROM transaksi
+				WHERE Jenis = 2 and Item_Transaksi like 'Pengeluaran Lain-Lain' and Tanggal like '".$tanggal."%'";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}
+
 	
 }
 ?>

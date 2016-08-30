@@ -75,7 +75,7 @@ app.controller('formController', function($scope,$http) {
 
     menuSelects.push(menu);
 
-<<<<<<< HEAD
+
     var menueditSelects = [];
     
     var menuedit = [];
@@ -145,8 +145,7 @@ app.controller('formController', function($scope,$http) {
 
     menueditSelects.push(menuedit);
 
-=======
->>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
+
     if($('input[name=transaksi]:checked').val()==1)
 	{
 		$scope.option = menuSelects[0];
@@ -179,11 +178,9 @@ app.controller('formController', function($scope,$http) {
     	var uraian = $scope.uraian;
     	var uang = $scope.uang;
     	var message = "<ul>"+"<li>"+"Transaksi : "+transaksi+"</li>"+"<li>"+"Uraian : "+uraian+"</li>"+"<li>"+"Biaya : "+uang+"</li>"+"</ul>";
-<<<<<<< HEAD
+
     	swal({   title: "<h2>Apakah anda yakin dengan data ini ?</h2>!",   text: message,   html: true ,showCancelButton: true,   confirmButtonColor: "#4682B4",   confirmButtonText: "Simpan",   closeOnConfirm: false}
-=======
-    	swal({   title: "<h2>Apakah anda yakin dengan data ini ?</h2>!",   text: message,   html: true ,showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes, delete it!",   closeOnConfirm: false}
->>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
+
             , function(){
                 var data =$.param({
                     item:$scope.selectedItem,
@@ -203,9 +200,7 @@ app.controller('formController', function($scope,$http) {
                 );
         });
     }
-   
-<<<<<<< HEAD
-   // $scope.editButton = function (id_transaksi,no_transaksi,item_transaksi,uraian,biaya,jenis) {
+     // $scope.editButton = function (id_transaksi,no_transaksi,item_transaksi,uraian,biaya,jenis) {
    //  if (jenis==1) {
    //      var pilihan = [];
    //      pilihan = menueditSelects[0];
@@ -241,7 +236,7 @@ app.controller('formController', function($scope,$http) {
    //  setTimeout(function(){ $('.sweet-alert.showSweetAlert.visible').css('margin-top',"-300px");console.log('change') }, 500);
     
    //  }
-=======
+
    $scope.editButton = function (id_transaksi,no_transaksi,item_transaksi,uraian,biaya) {
  
     swal.withForm({
@@ -271,5 +266,4 @@ app.controller('formController', function($scope,$http) {
     setTimeout(function(){ $('.sweet-alert.showSweetAlert.visible').css('margin-top',"-300px");console.log('change') }, 500);
     
     }
->>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 });

@@ -273,11 +273,9 @@ class m_report extends CI_Model
 	}
 	public function jumlah_lainlain_masuk_perhari($tanggal)
 	{
-<<<<<<< HEAD
+
 		$sql = "SELECT COUNT(Id_Transaksi) as Jumlah_Id, SUM(Biaya) as Jumlah_Biaya
-=======
-		$sql = "SELECT COUNT(Id_Transaksi) as Jumlah_Id
->>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
+
 				FROM transaksi
 				WHERE Jenis = 1 and Item_Transaksi like 'Penerimaan Lain-Lain' and Tanggal like '".$tanggal."%'";
 		$query = $this->db->query($sql);
@@ -286,11 +284,8 @@ class m_report extends CI_Model
 	}
 	public function jumlah_lainlain_keluar_perhari($tanggal)
 	{
-<<<<<<< HEAD
+
 		$sql = "SELECT COUNT(Id_Transaksi) as Jumlah_Id, SUM(Biaya) as Jumlah_Biaya
-=======
-		$sql = "SELECT COUNT(Id_Transaksi) as Jumlah_Id
->>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 				FROM transaksi
 				WHERE Jenis = 2 and Item_Transaksi like 'Pengeluaran Lain-Lain' and Tanggal like '".$tanggal."%'";
 		$query = $this->db->query($sql);

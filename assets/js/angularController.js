@@ -75,6 +75,7 @@ app.controller('formController', function($scope,$http) {
 
     menuSelects.push(menu);
 
+<<<<<<< HEAD
     var menueditSelects = [];
     
     var menuedit = [];
@@ -144,6 +145,8 @@ app.controller('formController', function($scope,$http) {
 
     menueditSelects.push(menuedit);
 
+=======
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
     if($('input[name=transaksi]:checked').val()==1)
 	{
 		$scope.option = menuSelects[0];
@@ -176,7 +179,11 @@ app.controller('formController', function($scope,$http) {
     	var uraian = $scope.uraian;
     	var uang = $scope.uang;
     	var message = "<ul>"+"<li>"+"Transaksi : "+transaksi+"</li>"+"<li>"+"Uraian : "+uraian+"</li>"+"<li>"+"Biaya : "+uang+"</li>"+"</ul>";
+<<<<<<< HEAD
     	swal({   title: "<h2>Apakah anda yakin dengan data ini ?</h2>!",   text: message,   html: true ,showCancelButton: true,   confirmButtonColor: "#4682B4",   confirmButtonText: "Simpan",   closeOnConfirm: false}
+=======
+    	swal({   title: "<h2>Apakah anda yakin dengan data ini ?</h2>!",   text: message,   html: true ,showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes, delete it!",   closeOnConfirm: false}
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
             , function(){
                 var data =$.param({
                     item:$scope.selectedItem,
@@ -197,6 +204,7 @@ app.controller('formController', function($scope,$http) {
         });
     }
    
+<<<<<<< HEAD
    // $scope.editButton = function (id_transaksi,no_transaksi,item_transaksi,uraian,biaya,jenis) {
    //  if (jenis==1) {
    //      var pilihan = [];
@@ -233,4 +241,35 @@ app.controller('formController', function($scope,$http) {
    //  setTimeout(function(){ $('.sweet-alert.showSweetAlert.visible').css('margin-top',"-300px");console.log('change') }, 500);
     
    //  }
+=======
+   $scope.editButton = function (id_transaksi,no_transaksi,item_transaksi,uraian,biaya) {
+ 
+    swal.withForm({
+        title: 'More complex Swal-Forms example',
+        text: 'This has different types of inputs',
+        showCancelButton: true,
+        confirmButtonColor: '#DD6B55',
+        confirmButtonText: 'Get form data!',
+        closeOnConfirm: true,
+        formFields: [
+          { id: 'uraian', placeholder: 'Nomor Transaksi',value:no_transaksi,title:'Nomor Transaksi' },
+          { id: 'uraian', placeholder: 'Uraian',value:uraian,title:'Uraian ' },
+          { id: 'biaya', placeholder: 'Biaya',value:biaya,title:'Biaya '  },
+          { id: 'select', type: 'select', options: [
+              {value: 'VK- Persalinan', text: 'VK- Persalinan'},
+              {value: 'test2', text: 'test2'},
+              {value: 'test3', text: 'test3'},
+              {value: 'test4', text: 'test4'},
+              {value: 'test5', text: 'test5'}
+          ]}
+          
+        ]
+      }, function (isConfirm) {
+        // do whatever you want with the form data
+        console.log(this.swalForm) // { name: 'user name', nickname: 'what the user sends' }
+      })
+    setTimeout(function(){ $('.sweet-alert.showSweetAlert.visible').css('margin-top',"-300px");console.log('change') }, 500);
+    
+    }
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 });

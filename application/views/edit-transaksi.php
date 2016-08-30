@@ -56,13 +56,24 @@
 							<div class ="table">
 								<table id="edit_transaksi" class="table table-striped table-bordered">
 									<thead>
+<<<<<<< HEAD
 										
+=======
+										<!-- <tr>
+											<th style="min-width: 550px;">Pemasukan</th>
+											<th style="min-width: 550px;">Pengeluaran</th>
+											
+										</tr> -->
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 										<tr>
 											<th style="min-width: 50px;">No Transaksi</th>
 											<th style="min-width: 200px;">Jenis Transaksi</th>
 											<th style="min-width: 250px;">Uraian</th>											
 											<th style="min-width: 150px;">Biaya</th>
+<<<<<<< HEAD
 											<!-- <th style="min-width: 150px;">Model Transaksi</th> -->
+=======
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 											<th style="min-width: 50px;">Ket</th>
 											
 											
@@ -77,11 +88,18 @@
 												<td><?php echo $value['No_Transaksi']; ?></td>
 												<td><?php echo $value['Item_Transaksi'];?></td>
 												<td><?php echo $value['Uraian'];?></td>
+<<<<<<< HEAD
 												<td><?php echo $value['Biaya'];?></td>												
 												<td><button class="fa fa-edit fa btn btn-danger" href="#" onclick="edit_detail(<?php echo $value['Id_Transaksi']?>);" ></button></td>
 												
 												</tr>
 												
+=======
+												<td><?php echo $value['Biaya'];?></td>
+												<td><button ng-click="editButton('<?php echo $value['Id_Transaksi']; ?>','<?php echo $value['No_Transaksi']; ?>','<?php echo $value['Item_Transaksi']; ?>','<?php echo $value['Uraian']; ?>','<?php echo $value['Biaya']; ?>')" class="fa fa-edit fa btn btn-danger"></button></td>
+												
+												</tr>
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 										<?php }?>
 
 
@@ -91,6 +109,7 @@
 							<!-- /.table -->
 						</div>
 						<!-- /.panel-body -->
+<<<<<<< HEAD
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -132,6 +151,9 @@
     </div>
   </div>
 </div>
+=======
+
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 					</div>
 					<!-- /.panel -->
 				</div>
@@ -143,10 +165,14 @@
 </body>
 
 <script type="text/javascript">
+<<<<<<< HEAD
 function edit_detail($id)
 {	
 	$('#exampleModal').modal("show")
 }
+=======
+
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 $(document).ready(function(){
 	$('#harian').DataTable( {
 			"scrollX": true,

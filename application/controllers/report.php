@@ -146,7 +146,11 @@ class Report extends CI_Controller
 				$data['bulan_s']=$bulan;
 				$data['tahun_s']=$tahun;
 				$data['jenis']=$jenisopt;
+<<<<<<< HEAD
 				// print_r($data);
+=======
+				print_r($data);
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 				$this->load->view('laporan-lainlain',$data);
 				$this->load->view('template/admin_footer');
 
@@ -155,9 +159,12 @@ class Report extends CI_Controller
         	else
         	{
         		$data['hasil'] = $this->m_report->tabel_bln_lainlain_th_klr($tanggal_lengkap);
+<<<<<<< HEAD
         		$temp = $this->m_report->jumlah_lainlain_masuk_perhari($tanggal_lengkap);
         		$panjang = (int) $temp;
 				$data['panjang']=$panjang;
+=======
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
         		$data['bulan_s']=$bulan;
 				$data['tahun_s']=$tahun;
 				$data['jenis']=$jenisopt;
@@ -3809,6 +3816,7 @@ class Report extends CI_Controller
 		 $objWriter->save('php://output');
 	}
 	
+<<<<<<< HEAD
 	public function transaksi_lainlain_masuk_excel($bulan,$tahun)
 	{
 		if ($bulan < 10) {
@@ -4035,6 +4043,9 @@ class Report extends CI_Controller
 
 		$objWriter->save('php://output');
 	}
+=======
+
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 	
 	
 	

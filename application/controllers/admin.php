@@ -132,6 +132,7 @@ class Admin extends CI_Controller
 		}
 		else redirect(base_url()."/");
 	}
+<<<<<<< HEAD
 	public function transaksi_kuitansi()
 	{
 		if($this->session->userdata('logged_in')){
@@ -200,6 +201,9 @@ class Admin extends CI_Controller
 		}
 		else redirect(base_url()."/");
 	}
+=======
+
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 	public function edit_transaksi($jenisopt)
 	{
 		if($this->session->userdata('logged_in'))
@@ -230,6 +234,7 @@ class Admin extends CI_Controller
 		else redirect(base_url('login'));
 	}
 	
+<<<<<<< HEAD
 	public function edit_detail($id)
 	{
 		if($this->session->userdata('logged_in')){
@@ -298,6 +303,9 @@ class Admin extends CI_Controller
 		}
 		else redirect(base_url()."/");
 	}	
+=======
+	
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 
 	
 }

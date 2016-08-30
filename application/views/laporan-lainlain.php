@@ -77,11 +77,19 @@
 									</div> 
 
 									
+<<<<<<< HEAD
 									<div class="col-md-4 pull-right"> 
 										<br>
 										
 										<a href="#" class="pull-right" id="excelPemDownload">Laporan Penerimaan Lain-Lain <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
 										<a href="#" class="pull-right" id="excelPemDownloadRekap">Laporan Pengeluaran Lain-Lain <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
+=======
+									<div class="col-md-3 pull-right"> 
+										<br>
+										
+										<a href="#" class="pull-right" id="excelPemDownload">Laporan Bulanan <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
+										<a href="#" class="pull-right" id="excelPemDownloadRekap">Rekapitulasi Bulanan <img src="<?php  echo base_url('assets/img/excel.png')?>"></a>
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 										<!-- <br>
 										<a href="#" class="pull-right" id="pdfPemDownload">Download PDF <img src="<?php  echo base_url('assets/img/pdf.png')?>"></a> -->
 
@@ -153,11 +161,19 @@ $(document).ready(function(){
 	});			
 
 	$('#excelPemDownload').click(function(){
+<<<<<<< HEAD
 		window.location="<?php echo site_url(); ?>report/transaksi_lainlain_masuk_excel/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val();
 	})
 
 	$('#excelPemDownloadRekap').click(function(){
 		window.location="<?php echo site_url(); ?>report/transaksi_lainlain_keluar_excel/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val();
+=======
+		window.location="<?php echo site_url(); ?>report/transaksi_bulanan_excel/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val();
+	})
+
+	$('#excelPemDownloadRekap').click(function(){
+		window.location="<?php echo site_url(); ?>report/rekapitulasi_transaksi_bulanan_excel/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val();
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 	})
 
 	$('#pdfPemDownload').click(function(){
@@ -167,7 +183,11 @@ $(document).ready(function(){
 	function changeDataPem()
 	{
 		
+<<<<<<< HEAD
 		window.location="<?php echo site_url(); ?>/report/laporan_lainlain/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val()+"/"+$('#jenisOpt').find(":selected").val()
+=======
+		window.location="<?php echo site_url(); ?>/report/laporan_bulanan/"+$('#bulanOpt').find(":selected").val()+"/"+$('#tahunOpt').find(":selected").val()+"/"+$('#jenisOpt').find(":selected").val()
+>>>>>>> fdc3360c1406076f7a60d364045ef276f214a52c
 		
 	}
 	$('#tahunOpt').change(function(){

@@ -200,6 +200,22 @@ app.controller('formController', function($scope,$http) {
                 );
         });
     }
+
+  $scope.showModal= function(Id_Transaksi,No_Transaksi,Item_Transaksi,Uraian,Biaya,jenis)
+  {
+    $scope.selectedItem= Item_Transaksi;
+    $scope.uraian=Uraian;
+    if (jenis==1) 
+    {
+      $scope.option=menuSelects[0];
+      $scope.selectedItem=menuSelects[0][0].value;
+    }
+    else if (jenis==2)
+    {
+      $scope.option=menuSelects[1];
+      $scope.selectedItem=menuSelects[1][0].value;
+    }
+  }  
      // $scope.editButton = function (id_transaksi,no_transaksi,item_transaksi,uraian,biaya,jenis) {
    //  if (jenis==1) {
    //      var pilihan = [];

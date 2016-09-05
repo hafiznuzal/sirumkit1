@@ -79,8 +79,7 @@
 												<td><?php echo $value['Uraian'];?></td>
 
 												<td><?php echo $value['Biaya'];?></td>												
-												<td><button class="fa fa-edit fa btn btn-danger" href="#" onclick="edit_detail(<?php echo $value['Id_Transaksi']?>);" ></button></td>
-												
+												<td><button id="myBtn" class="fa fa-edit fa btn btn-danger" href="#" ng-click="showModal($value['Id_Transaksi'],$value['No_Transaksi'],$value['Item_Transaksi'],$value['Uraian'],$value['Biaya'],$jenis);" ></button></td>												
 												</tr>
 												
 
@@ -96,7 +95,7 @@
 							<!-- /.table -->
 						</div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -150,16 +149,17 @@
 
 <script type="text/javascript">
 
-function edit_detail($id)
-{	
-	$('#exampleModal').modal("show")
-}
+
 
 $(document).ready(function(){
 	$('#harian').DataTable( {
 			"scrollX": true,
 			"scrollY": "400px"
 	});			
+  
+  $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
 
 	$('#excelPemDownload').click(function(){
 		window.location="<?php echo site_url(); ?>report/rekapitulasi_lahan_kecamatan_excel/"+$('#tahunOpt').val()+"/"+$('#periodeOpt').val();

@@ -79,7 +79,7 @@
 												<td><?php echo $value['Uraian'];?></td>
 
 												<td><?php echo $value['Biaya'];?></td>												
-												<td><button id="myBtn" class="fa fa-edit fa btn btn-danger" href="#" ng-click="showModal($value['Id_Transaksi'],$value['No_Transaksi'],$value['Item_Transaksi'],$value['Uraian'],$value['Biaya'],$jenis);" ></button></td>												
+												<td><button id="myBtn" class="fa fa-edit fa btn btn-danger" href="#" ng-click="showModal('<?php  echo $value['Id_Transaksi'];?>','<?php echo $value['No_Transaksi'];?>','<?php echo $value['Item_Transaksi']?>','<?php  echo $value['Uraian']?>','<?php  echo $value['Biaya']?>','<?php  echo $jenis?>');" ></button></td>												
 												</tr>
 												
 
@@ -105,9 +105,6 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-         <!--  <<?php if (condition) {
-          	# code...
-          } ?> -->
             <label class="radio-inline">
                 <input ng-click="cekFilter()"type="radio" name="transaksi" id="optionsRadiosInline1" value="1" checked> Pemasukan
             </label>

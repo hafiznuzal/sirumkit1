@@ -204,6 +204,12 @@ app.controller('formController', function($scope,$http) {
   $scope.showModal= function(Id_Transaksi,No_Transaksi,Item_Transaksi,Uraian,Biaya,jenis)
   {
     $scope.selectedItem= Item_Transaksi;
+    if( jenis==1 ){
+      $('input[name=transaksi]')[0].checked = true;
+    }
+    else {
+      $('input[name=transaksi]')[1].checked = true;
+    }
     $scope.uraian=Uraian;
     if (jenis==1) 
     {

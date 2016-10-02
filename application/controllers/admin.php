@@ -233,6 +233,36 @@ class Admin extends CI_Controller
 		
 		else redirect(base_url('login'));
 	}
+
+	public function cashier($jenisopt)
+	{
+		if($this->session->userdata('logged_in'))
+		{
+
+			$this->load->view('template/admin_header',$this->sesi);
+			$tanggal_lengkap = date("Y-m-d");
+			$this->load->model('m_report');
+
+
+
+			if ($jenisopt == 1) {
+				$data['hasil'] = $this->m_report->tabel_harian_masuk($tanggal_lengkap);
+			}
+        	else $data['hasil'] = $this->m_report->tabel_harian_keluar($tanggal_lengkap);
+        	// $this->load->view('/admin/laporan_harian',$data);
+			// $data['tanggal_s']=$tanggal;
+			// $data['bulan_s']=$bulan;
+			// $data['tahun_s']=$tahun;
+			$data['jenis']=$jenisopt;
+			// print_r($data1);
+			$this->load->view('cashier',$data);
+			$this->load->view('template/admin_footer');
+
+
+		}
+		
+		else redirect(base_url('login'));
+	}
 	
 
 	public function edit_detail($id)

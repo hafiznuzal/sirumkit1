@@ -213,6 +213,9 @@
 						<li>
 							<a href="<?php echo base_url('/admin/edit_transaksi').'/'.$jenisopt?>"><i class="fa fa-pencil-square-o fa-fw"></i> Edit Transaksi</a>
 						</li>
+						<li>
+							<a href="<?php echo base_url('/admin/cashier').'/'.$jenisopt?>"><i class="fa fa-money"></i> Cashier</a>
+						</li>
 						<!-- <li>
 							<a href="<?php echo site_url('/admin/pengembang');?>"><i class="fa fa-stethoscope fa-fw"></i> Rekam Medik</a>
 						</li> -->

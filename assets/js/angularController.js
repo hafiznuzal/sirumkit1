@@ -171,6 +171,8 @@ app.controller('formController', function($scope,$http) {
     	}
     }
 
+
+
     $scope.submit = function(){
         // var nomor = $scope.nomorTransaksi
     	var nama =  $scope.namaTransaksi
@@ -257,7 +259,58 @@ app.controller('formController', function($scope,$http) {
    //    })
    //  setTimeout(function(){ $('.sweet-alert.showSweetAlert.visible').css('margin-top',"-300px");console.log('change') }, 500);
     
-   //  }
+   //  }  
+    $scope.companies = [];
+    $scope.counter = 1;
+
+    $scope.addRow = function() {
+    var nama =  $scope.namaTransaksi
+    var transaksi = $('#selectedItem option:selected').text();
+    var uraian = $scope.uraian;
+    var uang = $scope.uang;
+    $scope.companies.push({'counter':$scope.counter, 'transaksi': transaksi, 'uraian':uraian, 'biaya':uang});
+    $scope.counter++;
+
+    $scope.namaTransaksi = '';
+    $scope.uraian = '';
+    $scope.uang = '';
+    }
+
+    $scope.removeRow = function(counter){        
+    var index = -1;   
+    var comArr = eval( $scope.companies );
+    for( var i = 0; i < comArr.length; i++ ) {
+      if( comArr[i].counter === counter ) {
+        index = i;
+        break;
+      }
+    }
+    if( index === -1 ) {
+      alert( "Something gone wrong" );
+    }
+    $scope.companies.splice( index, 1 );    
+    };
+
+    $scope.submitCashier = function() {
+      cashier = {cashier: $scope.companies};
+      console.log(cashier)
+      data =$.param({
+          cashier:$scope.companies
+      })
+      $http.post("/sirumkit1/index.php/admin/cashier/1", data, config)
+        .then(
+          function(response){
+            console.log(response.data)
+            swal("Good job!", "data disimpan", "success")
+          }, 
+          function(response){
+           // failure callback
+          }
+        );
+    }
+
+
+
 
    $scope.editButton = function (id_transaksi,no_transaksi,item_transaksi,uraian,biaya) {
  

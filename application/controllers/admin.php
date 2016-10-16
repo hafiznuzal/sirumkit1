@@ -242,21 +242,67 @@ class Admin extends CI_Controller
 			$this->load->view('template/admin_header',$this->sesi);
 			$tanggal_lengkap = date("Y-m-d");
 			$this->load->model('m_report');
+			$bulan = date('m');
+			$tahun = date('Y');
+			$hari = date('d');
 
+			if($this->input->method()=='post'){
+				$cashier = $this->input->post("cashier");
+				// echo json_encode($cashier);
+				// exit();
+				
+				$this->load->model('m_report');
+				
+				$id_kuitansi=$this->m_report->id_max_kuitansi();
+				$id_kuitansi=$id_kuitansi[0]['Id'];
+				if ($id_kuitansi == 0) {
+					$id_kuitansi = 1;
+				}
+				
+				++$id_kuitansi;
+				
+				// echo json_encode($id_kuitansi);
+				// 	exit();
 
+				foreach ($cashier as $key => $value) {
+					$id_trans=$this->m_report->id_max_masuk($tahun,$bulan);
+					$id_trans=$id_trans[0]['Id'];
+					++$id_trans;
 
-			if ($jenisopt == 1) {
-				$data['hasil'] = $this->m_report->tabel_harian_masuk($tanggal_lengkap);
+					$id = $this->m_report->id_max();
+					$id=$id[0]['Id'];
+					++$id;
+					$tanggal = date("Y-m-d");
+					$jenis = 1;
+					// echo json_encode($id_kuitansi);
+					// exit();
+					$temp_biaya = $value['biaya'];
+					$temp_transaksi = $value['transaksi'];
+					$temp_uraian = $value['uraian'];
+					
+					$this->m_report->insert_transaksi($id,$id_kuitansi,$id_trans,$temp_transaksi,$temp_uraian,$temp_biaya,$tanggal,$jenis);
+					
+				}
+				
+				// print_r($id);
 			}
-        	else $data['hasil'] = $this->m_report->tabel_harian_keluar($tanggal_lengkap);
-        	// $this->load->view('/admin/laporan_harian',$data);
-			// $data['tanggal_s']=$tanggal;
-			// $data['bulan_s']=$bulan;
-			// $data['tahun_s']=$tahun;
-			$data['jenis']=$jenisopt;
-			// print_r($data1);
-			$this->load->view('cashier',$data);
-			$this->load->view('template/admin_footer');
+
+
+			if($this->input->method()=='get')
+			{
+				if ($jenisopt == 1) {
+					$data['hasil'] = $this->m_report->tabel_harian_masuk($tanggal_lengkap);
+				}
+	        	else $data['hasil'] = $this->m_report->tabel_harian_keluar($tanggal_lengkap);
+	        	// $this->load->view('/admin/laporan_harian',$data);
+				// $data['tanggal_s']=$tanggal;
+				// $data['bulan_s']=$bulan;
+				// $data['tahun_s']=$tahun;
+				$data['jenis']=$jenisopt;
+				// print_r($data1);
+				$this->load->view('cashier',$data);
+				$this->load->view('template/admin_footer');
+			}
 
 
 		}

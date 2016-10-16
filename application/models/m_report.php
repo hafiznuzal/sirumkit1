@@ -25,6 +25,23 @@ class m_report extends CI_Model
 		$data = $query->result_array();
 		return $data;
 	}
+
+	public function id_max()
+	{
+		$sql = "SELECT MAX(Id_Transaksi) as Id
+				FROM transaksi";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}
+	public function id_max_kuitansi()
+	{
+		$sql = "SELECT MAX(Id_Kuitansi) as Id
+				FROM transaksi";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}
 	
 	public function jumlah_transaksi_masuk_perhari($tanggal)
 	{
@@ -243,10 +260,10 @@ class m_report extends CI_Model
 
 	
 
-	public function insert_transaksi($id,$nomor_transaksi,$item_transaksi,$uraian,$biaya,$tanggal,$jenis)
+	public function insert_transaksi($id,$id_kuitansi,$nomor_transaksi,$item_transaksi,$uraian,$biaya,$tanggal,$jenis)
 	{
-		$sql = "INSERT INTO Transaksi (Id_Transaksi, No_Transaksi, Item_Transaksi,Uraian,Biaya,Tanggal,Jenis)
-				VALUES ($id, $nomor_transaksi,'$item_transaksi','$uraian',$biaya,'$tanggal',$jenis)";
+		$sql = "INSERT INTO Transaksi (Id_Transaksi,Id_Kuitansi,No_Transaksi,Item_Transaksi,Uraian,Biaya,Tanggal,Jenis)
+				VALUES ($id,$id_kuitansi,$nomor_transaksi,'$item_transaksi','$uraian',$biaya,'$tanggal',$jenis)";
 		$query = $this->db->query($sql);
 		// $data = $query->result_array();
 		// return $data;

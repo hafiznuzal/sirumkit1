@@ -71,7 +71,7 @@ class Admin extends CI_Controller
 			$data['keluar_bln']=$hasil_keluar_bln[0]['Biaya'];
 			$data['masuk_hri']=$hasil_masuk_hri[0]['Biaya'];
 			$data['keluar_hri']=$hasil_keluar_hri[0]['Biaya'];
-			print_r($data);
+			// print_r($data);
 			// exit();
 			$this->load->view('template/admin_header',$this->sesi);
 			$this->load->view('admin/admin_home',$data);

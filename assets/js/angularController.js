@@ -205,6 +205,7 @@ app.controller('formController', function($scope,$http) {
 
   $scope.showModal= function(Id_Transaksi,No_Transaksi,Item_Transaksi,Uraian,Biaya,jenis)
   {
+     $scope.idtransaksi = Id_Transaksi;
     $scope.selectedItem= Item_Transaksi;
     if( jenis==1 ){
       $('input[name=transaksi]')[0].checked = true;
@@ -213,6 +214,7 @@ app.controller('formController', function($scope,$http) {
       $('input[name=transaksi]')[1].checked = true;
     }
     $scope.uraian=Uraian;
+    $scope.uang= parseInt(Biaya);
     if (jenis==1) 
     {
       $scope.option=menuSelects[0];
@@ -223,54 +225,55 @@ app.controller('formController', function($scope,$http) {
       $scope.option=menuSelects[1];
       $scope.selectedItem=menuSelects[1][0].value;
     }
+    console.log($scope.idtransaksi);
+   
   }  
-     // $scope.editButton = function (id_transaksi,no_transaksi,item_transaksi,uraian,biaya,jenis) {
-   //  if (jenis==1) {
-   //      var pilihan = [];
-   //      pilihan = menueditSelects[0];
+    $scope.edit_companies = [];
 
-   //  }
-   //  swal.withForm({
-   //      title: 'Edit Transaksi',
-   //      text: 'Pengubahan Transaksi Hari Ini',
-   //      showCancelButton: true,
-   //      confirmButtonColor: '#228B22',
-   //      confirmButtonText: 'Konfirmasi',
-   //      closeOnConfirm: true,
-   //      formFields: [
-   //        { id: 'uraian', placeholder: 'Nomor Transaksi',value:no_transaksi,title:'Nomor Transaksi' },
-   //        { id: 'uraian', placeholder: 'Uraian',value:uraian,title:'Uraian ' },
-   //        { id: 'biaya', placeholder: 'Biaya',value:biaya,title:'Biaya'  },
-   //        { id: 'test', type: 'radio',value:'1',name:'Masuk'  },
-   //          { id: 'test', type: 'radio',value:'2',name:'keluar'  },
-   //        { id: 'select', type: 'select', options: [
-          
-   //            {value: 'VK- Persalinan', text: 'VK- Persalinan'},
-   //            {value: 'test2', text: 'test2'},
-   //            {value: 'test3', text: 'test3'},
-   //            {value: 'test4', text: 'test4'},
-   //            {value: 'test5', text: 'test5'}
-   //        ]}
-          
-   //      ]
-   //    }, function (isConfirm) {
-   //      // do whatever you want with the form data
-   //      console.log(this.swalForm) // { name: 'user name', nickname: 'what the user sends' }
-   //    })
-   //  setTimeout(function(){ $('.sweet-alert.showSweetAlert.visible').css('margin-top',"-300px");console.log('change') }, 500);
-    
-   //  }  
+    $scope.submit_edit = function(idtransaksi) {
+
+      var id = idtransaksi      
+      var nama =  $scope.namaTransaksi
+      var transaksi = $('#selectedItem option:selected').text();
+      var uraian = $scope.uraian;
+      var uang = $scope.uang;
+      var jenisopt = $('input[name=transaksi]:checked').val();
+      $scope.edit_companies.push({'counter':$scope.counter, 'transaksi': transaksi, 'uraian':uraian, 'biaya':uang, 'jenis':jenisopt, 'id':id});
+      edit_item = {edit_item: $scope.edit_companies};
+      console.log(edit_item)
+      data =$.param({
+          edit_item:$scope.edit_companies
+      })
+      $http.post("/sirumkit1/index.php/admin/edit_transaksi/"+jenisopt, data, config)
+        .then(
+          function(response){
+            console.log(response.data)
+            swal("Good job!", "data disimpan", "success")
+             $("#myModal").modal().hide();
+             
+             window.top.location.href = "/sirumkit1/index.php/admin/edit_transaksi/1"; 
+          }, 
+          function(response){
+           // failure callback
+          }
+        );
+
+    }
+
+
     $scope.companies = [];
     $scope.counter = 1;
+    $scope.total = 0;
 
     $scope.addRow = function() {
     var nama =  $scope.namaTransaksi
     var transaksi = $('#selectedItem option:selected').text();
     var uraian = $scope.uraian;
     var uang = $scope.uang;
-    $scope.companies.push({'counter':$scope.counter, 'transaksi': transaksi, 'uraian':uraian, 'biaya':uang});
+    $scope.total= $scope.total+$scope.uang;
+    var total = $scope.total;
+    $scope.companies.push({'counter':$scope.counter, 'transaksi': transaksi, 'uraian':uraian, 'biaya':uang, 'total':total});
     $scope.counter++;
-
     $scope.namaTransaksi = '';
     $scope.uraian = '';
     $scope.uang = '';
@@ -286,7 +289,7 @@ app.controller('formController', function($scope,$http) {
       }
     }
     if( index === -1 ) {
-      alert( "Something gone wrong" );
+      // alert( "Something gone wrong" );
     }
     $scope.companies.splice( index, 1 );    
     };
@@ -308,6 +311,7 @@ app.controller('formController', function($scope,$http) {
           }
         );
     }
+     
 
 
 

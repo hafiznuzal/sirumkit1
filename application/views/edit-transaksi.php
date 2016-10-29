@@ -79,7 +79,7 @@
 												<td><?php echo $value['Uraian'];?></td>
 
 												<td><?php echo $value['Biaya'];?></td>												
-												<td><button id="myBtn" class="fa fa-edit fa btn btn-danger" href="#" ng-click="showModal('<?php  echo $value['Id_Transaksi'];?>','<?php echo $value['No_Transaksi'];?>','<?php echo $value['Item_Transaksi']?>','<?php  echo $value['Uraian']?>','<?php  echo $value['Biaya']?>','<?php  echo $jenis?>');" ></button></td>												
+												<td><button class="fa fa-edit fa btn btn-danger myBtn" href="#" ng-click="showModal('<?php  echo $value['Id_Transaksi'];?>','<?php echo $value['No_Transaksi'];?>','<?php echo $value['Item_Transaksi']?>','<?php  echo $value['Uraian']?>','<?php  echo $value['Biaya']?>','<?php  echo $jenis?>');" ></button></td>												
 												</tr>
 												
 
@@ -106,7 +106,7 @@
         <form>
           <div class="form-group">
             <label class="radio-inline">
-                <input ng-click="cekFilter()"type="radio" name="transaksi" id="optionsRadiosInline1" value="1" checked> Pemasukan
+                <input ng-click="cekFilter()"type="radio" name="transaksi" id="optionsRadiosInline1" value="1"> Pemasukan
             </label>
             <label class="radio-inline">
                 <input ng-click="cekFilter()"type="radio" name="transaksi" id="optionsRadiosInline2" value="2">Pengeluaran
@@ -120,15 +120,19 @@
             <label>Uraian</label>
                 <textarea ng-model="uraian" class="form-control" rows="3" value="lalala"></textarea>
           </div>
-          <div class="form-group">
-            <label for="message-text" class="control-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
+          <div class="form-group input-group">
+        <span class="input-group-addon">Rp.</span>
+        <input ng-model="uang" type="number" class="form-control">
+        <span class="input-group-addon">.00</span>  
+        </div>
+        </form>       
+        
       </div>
+      
+    	
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button ng-click="submit_edit(idtransaksi)" class="btn btn-primary">Simpan</button>
       </div>
     </div>
   </div>
@@ -154,7 +158,7 @@ $(document).ready(function(){
 			"scrollY": "400px"
 	});			
   
-  $("#myBtn").click(function(){
+  $(".myBtn").click(function(){
         $("#myModal").modal();
     });
 

@@ -58,7 +58,7 @@
                 <form method="post" action="<?php echo base_url('') ?>">
                     <div class ="panel panel-primary">
                         <div class="panel-heading">
-                            <i class="fa fa-list"></i> Laporan Bulanan
+                            <i class="fa fa-list"></i> Tabel Transaksi
                         </div>
 
                         <div class="panel-body">
@@ -97,7 +97,8 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <button type="button" ng-click="submitCashier()" class="btn btn-default">Sementara</button>
+                                <h4>Total =  {{company.total}}</h4>
+                                <button type="button" ng-click="submitCashier()" class="btn btn-danger pull-right">Konfirmasi</button>
                             </div>
                             <!-- /.table -->
                         </div>

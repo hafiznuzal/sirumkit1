@@ -85,27 +85,6 @@ class m_report extends CI_Model
 		return $data;
 	}
 
-
-	// public function tabel_harian_jumlah_masuk($tanggal)
-	// {
-	// 	$sql = "SELECT SUM(Biaya) as Biaya_Masuk
-	// 			FROM transaksi as transaksi
-	// 			WHERE Jenis = 1 and Tanggal = '$tanggal'";
-	// 	$query = $this->db->query($sql);
-	// 	$data = $query->result_array();
-	// 	return $data;
-	// }
-
-	// public function tabel_harian_jumlah_keluar($tanggal)
-	// {
-	// 	$sql = "SELECT SUM(Biaya) as Biaya_Keluar
-	// 			FROM transaksi as transaksi
-	// 			WHERE Jenis = 2 and Tanggal = '$tanggal'";
-	// 	$query = $this->db->query($sql);
-	// 	$data = $query->result_array();
-	// 	return $data;
-	// }
-
 	
 
 	public function tabel_bln_thn_jumlah_masuk($tanggal)
@@ -127,6 +106,7 @@ class m_report extends CI_Model
 		$data = $query->result_array();
 		return $data;
 	}
+	
 
 	public function tabel_bln_msk_VK_Persalinan($tanggal)
 	{
@@ -260,7 +240,16 @@ class m_report extends CI_Model
 
 	
 
-	public function insert_transaksi($id,$id_kuitansi,$nomor_transaksi,$item_transaksi,$uraian,$biaya,$tanggal,$jenis)
+	public function insert_transaksi($id,$nomor_transaksi,$item_transaksi,$uraian,$biaya,$tanggal,$jenis)
+	{
+		$sql = "INSERT INTO Transaksi (Id_Transaksi,No_Transaksi,Item_Transaksi,Uraian,Biaya,Tanggal,Jenis)
+				VALUES ($id,$nomor_transaksi,'$item_transaksi','$uraian',$biaya,'$tanggal',$jenis)";
+		$query = $this->db->query($sql);
+		// $data = $query->result_array();
+		// return $data;
+	}
+
+	public function insert_transaksi_berkuitansi($id,$id_kuitansi,$nomor_transaksi,$item_transaksi,$uraian,$biaya,$tanggal,$jenis)
 	{
 		$sql = "INSERT INTO Transaksi (Id_Transaksi,Id_Kuitansi,No_Transaksi,Item_Transaksi,Uraian,Biaya,Tanggal,Jenis)
 				VALUES ($id,$id_kuitansi,$nomor_transaksi,'$item_transaksi','$uraian',$biaya,'$tanggal',$jenis)";
@@ -308,6 +297,16 @@ class m_report extends CI_Model
 		$query = $this->db->query($sql);
 		$data = $query->result_array();
 		return $data;
+	}
+
+	public function edit_transksi($id,$jenis,$item,$uraian,$biaya)
+	{
+
+		$sql = "UPDATE transaksi
+				SET Item_Transaksi='$item',Uraian='$uraian',Biaya=$biaya,Jenis=$jenis
+				WHERE Id_Transaksi=$id";
+		$query = $this->db->query($sql);
+		
 	}
 
 	

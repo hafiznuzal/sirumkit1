@@ -97,7 +97,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <h4>Total =  {{company.total}}</h4>
+                                <!-- <h4>Total =  {{company.total}}</h4> -->
                                 <button type="button" ng-click="submitCashier()" class="btn btn-danger pull-right">Konfirmasi</button>
                             </div>
                             <!-- /.table -->

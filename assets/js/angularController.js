@@ -305,6 +305,7 @@ app.controller('formController', function($scope,$http) {
           function(response){
             console.log(response.data)
             swal("Good job!", "data disimpan", "success")
+             window.top.location.href = "/sirumkit1/index.php/admin/cashier/1"; 
           }, 
           function(response){
            // failure callback
